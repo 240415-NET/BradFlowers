@@ -63,7 +63,8 @@ class Program
         //decimal types - double and float
         double weight = 201.4;
         //numeric type conversion - explicit and implicit
-        double someDecimal = 4.99999999;
+        double someDecimal = 4.4;
+        int someInteger = (int) someDecimal;
 
         //We need to explicitly convert between a Double -> an Int
         //because we WILL lose data when we do so
