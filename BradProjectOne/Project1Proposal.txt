@@ -1,0 +1,62 @@
+BradProjectOne
+
+## Requirements
+
+- The application should be a C# Console Application		---- Covered by creating 
+- The application should build and run		----Covered if it successfully runs
+- The application should interact with users, and provide some console UI		----Covered with menus and user inputs
+- The application should allow for multiple users to log in and persist their data		----covered with menu 1 and unique user profiles
+- The application should demonstrate good input validation		----covered with data validation for variables collected
+- The application should persist data to a SQL Server DB		----details to follow
+- The application should communicate to DB via ADO.NET or Entity Framework Core		----details to follow
+- The application should have unit tests		--details to follow
+
+
+Blood Pressure Tracker
+
+What I want to do:
+
+-Start with a menu like this(Data validation to only enter number selection)
+	-1 New user?
+	-2 Returning user?
+	-3 Exit
+Handling user option selected
+	-1 prompt for name and generate a userId(possibly using GUID method?) - continue to next menu
+	-2 prompt for name to search DB(or userId depending on simplicity for user--GUID is way too long for them to enter) - continue to next menu
+	-3 ends app
+
+-Next Menu-- immediately if returning user(2) or after userName and userId(system generated) are established for new user(1)--(Data validation to only enter number selection)
+	-1 Enter new reading
+	-2 View all previous entries
+	-3 Delete a previous entry
+	-4 Exit
+-different category collections for Systolic(top number), Diastolic(bottom number), Pulse and date of reading(could also do system date if we don't want user to manually enter a date?--undecided)
+	-validation of data types
+	-1 Collect/prompt user for entry of reading (will store to DB)--questions one by one
+		-Once entered return to 'Next Menu'
+	-2 will display all prior stored entries including the date and numbers(pulled from DB) in single view on separate lines
+		-return to Next Menu - by hitting enter maybe?
+	-3 will give the option to delete an entry (consider modifying if that isn't getting too complex)
+		-likely need some sort of unique readingId to allow for deletion
+	-4 will end app
+
+
+
+Models(what we are trying to work with and store)--create a separate folder to store all models .CS files by topic--Ie. User, Readings, etc.  -- NEED SOME HELP HERE
+	-User
+		-userId (int)
+		-userName (string)
+		-readingId (string?) --talked about defined GUID methods if I remember right
+	-Menu?
+	-Reading Details -- Not sure if there should be separate individual classes for top, bottom numbers and pulse or just one?
+	-Date checked(not sure if needed or could just be included in class for reading details?)
+
+
+
+Also separate folders for presentation layer(menus in this case), data access layer(storing of data in the database) and business logic(any specific business rules needed)
+
+
+
+Nice to haves later
+
+-another option from menu to display average readings, and also high and low readings (with date)
