@@ -22,7 +22,7 @@ What I want to do:
 	-3 Exit
 Handling user option selected
 	-1 prompt for name and generate a userId(possibly using GUID method?) - continue to next menu
-	-2 prompt for name to search DB(or userId depending on simplicity for user--GUID is way too long for them to enter) - continue to next menu
+	-2 prompt for name to search DB(or userId depending on simplicity for user ID--GUID is way too long for them to enter) - continue to next menu
 	-3 ends app
 
 -Next Menu-- immediately if returning user(2) or after userName and userId(system generated) are established for new user(1)--(Data validation to only enter number selection)
@@ -43,13 +43,18 @@ Handling user option selected
 
 
 Models(what we are trying to work with and store)--create a separate folder to store all models .CS files by topic--Ie. User, Readings, etc.  -- NEED SOME HELP HERE
-	-User
-		-userId (int)
+	-userProfile
+		-userId (int or string)
 		-userName (string)
 		-??readingId (string?) --maybe better as it's own model class or part of reading details?
-	-Reading Details -- Not sure if there should be separate individual classes for top, bottom numbers and pulse or just one?
-	-Menu?--probably under the Presentation layer folders as it's not really model?
-	-Date checked(not sure if needed or could just be included in class for reading details?)
+	-bloodPressureRecord -- Not sure if there should be separate individual classes for top, bottom numbers and pulse or just one?
+		-systolicNumber (int)
+		-diastolicNumber (int)
+		-pulse (int)
+		-dateChecked (string or something better)
+
+	-menu?--probably under the Presentation layer folders as it's not really model?
+
 
 
 
