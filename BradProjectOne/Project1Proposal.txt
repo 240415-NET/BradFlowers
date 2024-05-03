@@ -46,9 +46,9 @@ Models(what we are trying to work with and store)--create a separate folder to s
 	-User
 		-userId (int)
 		-userName (string)
-		-readingId (string?) --talked about defined GUID methods if I remember right
-	-Menu?
+		-??readingId (string?) --maybe better as it's own model class or part of reading details?
 	-Reading Details -- Not sure if there should be separate individual classes for top, bottom numbers and pulse or just one?
+	-Menu?--probably under the Presentation layer folders as it's not really model?
 	-Date checked(not sure if needed or could just be included in class for reading details?)
 
 
@@ -60,3 +60,4 @@ Also separate folders for presentation layer(menus in this case), data access la
 Nice to haves later
 
 -another option from menu to display average readings, and also high and low readings (with date)
+-Maybe messaging when your reading is way to high or low(probably can do that as day1)
