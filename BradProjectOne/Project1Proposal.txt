@@ -16,53 +16,73 @@ Blood Pressure Tracker
 
 What I want to do:
 
--Start with a menu like this(Data validation to only enter number selection)
+-Start with a menu like this(Data validation to only enter number selection) - mainMenu
 	-1 New user?
 	-2 Returning user?
 	-3 Exit
-Handling user option selected
-	-1 prompt for name and generate a userId(possibly using GUID method?) - continue to next menu
-	-2 prompt for name to search DB(or userId depending on simplicity for user ID--GUID is way too long for them to enter) - continue to next menu
+Handling the user option that was selected from mainMenu
+	-1 prompt for name and generate a userId(possibly using GUID method?) - continue to userMenu
+	-2 prompt for name to search DB - continue to next menu
 	-3 ends app
 
--Next Menu-- immediately if returning user(2) or after userName and userId(system generated) are established for new user(1)--(Data validation to only enter number selection)
+-User Menu(userMenu) - immediately if returning user selection is 2 or after userName and userId are established for new user(1)--(Data validation to only enter number selection)
 	-1 Enter new reading
 	-2 View all previous entries
-	-3 Delete a previous entry
+	-3 Delete a previous entry with date
 	-4 Exit
--different category collections for Systolic(top number), Diastolic(bottom number), Pulse and date of reading(could also do system date if we don't want user to manually enter a date?--undecided)
-	-validation of data types
-	-1 Collect/prompt user for entry of reading (will store to DB)--questions one by one
+		-1 Collect/prompt user for entry of reading (will store to DB) - questions one by one
 		-Once entered return to 'Next Menu'
-	-2 will display all prior stored entries including the date and numbers(pulled from DB) in single view on separate lines
+		-2 will display all prior stored entries including the date and numbers(pulled from DB) in single view on separate lines - bloodPressureMenu
 		-return to Next Menu - by hitting enter maybe?
-	-3 will give the option to delete an entry (consider modifying if that isn't getting too complex)
-		-likely need some sort of unique readingId to allow for deletion
-	-4 will end app
+		-3 will give the option to delete an entry
+		-4 will end app
 
 
 
-Models(what we are trying to work with and store)--create a separate folder to store all models .CS files by topic--Ie. User, Readings, etc.  -- NEED SOME HELP HERE
+Models(what we are trying to work with and store)--create separate folders to store all models .CS files by topic
 	-userProfile
-		-userId (int or string)
+		-userId (GUID) // userId will be primary key of this table
 		-userName (string)
-		-??readingId (string?) --maybe better as it's own model class or part of reading details?
-	-bloodPressureRecord -- Not sure if there should be separate individual classes for top, bottom numbers and pulse or just one?
+		
+	-bloodPressureRecord
+		-userId (GUID) - same user ID can have multiple readings //foreign key references the primary key(which is in userProfile)
+		-readingId (GUID) //primary key for this table
 		-systolicNumber (int)
 		-diastolicNumber (int)
 		-pulse (int)
-		-dateChecked (string or something better)
-
-	-menu?--probably under the Presentation layer folders as it's not really model?
+		-dateChecked (string or something better) //should be unique
 
 
+Separate folders for presentation layer(menus in this case), data access layer(storing of data in the database) and controllers(any specific business logic, etc. needed)
+
+Presentation Directory
+	-mainMenu
+	-userMenu
+	-bloodPressureMenu
+
+Controllers Directory
+	-userProfileController
+		-createUser
+		-getReturningUser
+	-bloodPressureController
+		-createReading
+		-retrieveReadings
+		-deleteReading
+
+Data Access Directory
+	-userRepository
+		-create
+		-retrieve
+	-bloodPressureRecordRepository
+		-create
+		-retrieve
+		-delete
 
 
-Also separate folders for presentation layer(menus in this case), data access layer(storing of data in the database) and business logic(any specific business rules needed)
 
+Day 2 to nice to haves
 
-
-Nice to haves later
-
--another option from menu to display average readings, and also high and low readings (with date)
--Maybe messaging when your reading is way to high or low(probably can do that as day1)
+-another option from userMenu to display average readings, and also high and low readings (with date)
+-generate a user-friendly userId and switch the login to userId(something like 1, 2, 3, 4, etc. like a policy number in our world)
+-Messaging when your reading is way to high or low(probably can do that as day1)
+-Allow multiple entries for same date(dateChecked)
