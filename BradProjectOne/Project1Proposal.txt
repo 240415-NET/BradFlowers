@@ -83,6 +83,6 @@ Data Access Directory
 Day 2 to nice to haves
 
 -another option from userMenu to display average readings, and also high and low readings (with date)
--generate a user-friendly userId and switch the login to userId(something like 1, 2, 3, 4, etc. like a policy number in our world)
+-generate a user-friendly userId and switch the login to userId and readingId(something like 1, 2, 3, 4, etc. like a policy number in our world)
 -Messaging when your reading is way to high or low
 -Allow multiple entries for same date(dateChecked)

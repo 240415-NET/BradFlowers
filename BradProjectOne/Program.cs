@@ -1,9 +1,12 @@
-﻿namespace BradProjectOne;
+﻿using BradProjectOne.PresentationLayer;
+
+namespace BradProjectOne;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        mainMenu.startMenu();
+        userMenu.returningUserMenu();
     }
 }
