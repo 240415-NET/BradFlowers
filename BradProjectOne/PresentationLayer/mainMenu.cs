@@ -1,6 +1,6 @@
 namespace BradProjectOne.PresentationLayer
 {
-    public class mainMenu
+    public class MainMenu
     {
         public static void startMenu()
         {
@@ -54,6 +54,8 @@ namespace BradProjectOne.PresentationLayer
 
 
         }
+
+
 
 
     }

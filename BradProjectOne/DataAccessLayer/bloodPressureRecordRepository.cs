@@ -1,6 +1,6 @@
 namespace BradProjectOne.DataAccessLayer
 {
-    public class bloodPressureRecordRepository
+    public class BloodPressureRecordRepository
     {
         public static void createBloodPressureRecord()
         {

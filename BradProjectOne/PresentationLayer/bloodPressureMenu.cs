@@ -1,6 +1,6 @@
 namespace BradProjectOne.PresentationLayer
 {
-    public class bloodPressureMenu
+    public class BloodPressureMenu
     {
         public static void bpMenu()
         {

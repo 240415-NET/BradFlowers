@@ -1,6 +1,6 @@
 namespace BradProjectOne.ControllersLayer
 {
-    public class bloodPressureController
+    public class BloodPressureController
     {
         public static void createReading()
         {

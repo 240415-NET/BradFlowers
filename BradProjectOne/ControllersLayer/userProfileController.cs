@@ -2,7 +2,7 @@ using BradProjectOne.Models;
 
 namespace BradProjectOne.ControllersLayer
 {
-    public class userProfileController
+    public class UserProfileController
     {
         public static void createUser(string userName)
         {

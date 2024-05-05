@@ -1,6 +1,6 @@
 namespace BradProjectOne.PresentationLayer
 {
-    public class userMenu
+    public class UserMenu
     {
         public static void returningUserMenu()
         {

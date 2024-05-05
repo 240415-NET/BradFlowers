@@ -1,6 +1,6 @@
 namespace BradProjectOne.DataAccessLayer
 {
-    public class userRepository
+    public class UserRepository
     {
         public static void createUser()
         {
