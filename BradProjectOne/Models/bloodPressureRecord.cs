@@ -8,6 +8,8 @@ namespace BradProjectOne.Models
         public int diastolicNumber { get; set; }
         public int pulse { get; set; }
         public string dateChecked { get; set; }
+
+        
     }
 
 
