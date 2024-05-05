@@ -57,8 +57,11 @@ Separate folders for presentation layer(menus in this case), data access layer(s
 
 Presentation Directory
 	-mainMenu
+		-startMenu
 	-userMenu
+		-returningUserMenu
 	-bloodPressureMenu
+		-TBD
 
 Controllers Directory
 	-userProfileController
@@ -71,12 +74,12 @@ Controllers Directory
 
 Data Access Directory
 	-userRepository
-		-create
-		-retrieve
+		-createUser
+		-retrieveUser
 	-bloodPressureRecordRepository
-		-create
-		-retrieve
-		-delete
+		-createBloodPressureRecord
+		-retrieveBloodPressureRecord
+		-deleteBloodPressureRecord
 
 
 

@@ -7,7 +7,8 @@ namespace BradProjectOne.PresentationLayer
             Console.WriteLine("Welcome back! Please select an option:");
             Console.WriteLine("1 Enter new blood pressure reading");
             Console.WriteLine("2 View all previous readings");
-            Console.WriteLine("3 Exit");
+            Console.WriteLine("3 Delete a previous entry");
+            Console.WriteLine("4 Exit");
 
 
         }
