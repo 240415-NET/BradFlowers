@@ -28,7 +28,7 @@ namespace BradProjectOne.PresentationLayer
 
                             break;
                         case 2:
-                            Console.WriteLine("Returning user selected");
+                            Console.WriteLine("Welcome back user!");
                             validChoice = true;
 
                             break;
