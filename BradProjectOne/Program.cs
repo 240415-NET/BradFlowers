@@ -6,7 +6,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        MainMenu.startMenu();
-        //userMenu.returningUserMenu();
+        //MainMenu.startMenu();
+        UserMenu.returningUserMenu();
     }
 }

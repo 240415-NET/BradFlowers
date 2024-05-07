@@ -45,7 +45,7 @@ namespace BradProjectOne.PresentationLayer
                 catch (Exception ex)
                 {
                     validChoice = false;
-                    Console.WriteLine(ex);
+                    Console.WriteLine(ex);  // might not need to display the message to end user, but it's helpful for debugging, will remove later.
                     Console.WriteLine("\n Please enter a valid number.");
                 }
 
