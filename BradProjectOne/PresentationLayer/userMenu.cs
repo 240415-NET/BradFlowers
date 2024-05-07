@@ -4,8 +4,8 @@ namespace BradProjectOne.PresentationLayer
     {
         public static void returningUserMenu()
         {
-            int returnMenuChoice = 0;
-            bool validChoice = true;
+            int returnMenuChoice = 0;  // collecting choice inputs
+            bool validChoice = true; // validating choice inputs to continue or break in switch statement
 
             Console.WriteLine("Welcome back! Please select an option:");
             Console.WriteLine("1 Enter new blood pressure reading");
@@ -13,7 +13,7 @@ namespace BradProjectOne.PresentationLayer
             Console.WriteLine("3 Delete a previous entry");
             Console.WriteLine("4 Exit");
 
-            do
+            do //overall do while loop to collect all user inputs needed
             {
                 try
                 {
@@ -21,38 +21,66 @@ namespace BradProjectOne.PresentationLayer
 
                     switch (returnMenuChoice)
                     {
-                        case 1:  // review exceptions and see if I can't get it loop back to question if invalid input.
-                                 //Ie. systolic is outside of range, re-ask for input.
-                                
-                            Console.WriteLine("Please enter your new blood pressure reading");
-                            Console.WriteLine("Enter your systolic pressure:");
-                            int systolic = Convert.ToInt32(Console.ReadLine());
-                            if (systolic < 0 || systolic > 300)
-                            {
-                                throw new Exception("Systolic pressure must be between 0 and 300.");
-                            }
-                                                    
-                            Console.WriteLine("Enter your diastolic pressure:");
-                            int diastolic = Convert.ToInt32(Console.ReadLine());
-                            if (diastolic < 0 || diastolic > 300)
-                            {
-                                throw new Exception("Diastolic pressure must be between 0 and 300.");
-                            }
+                        case 1:
 
-                            Console.WriteLine("Enter your pulse:");
-                            int pulse = Convert.ToInt32(Console.ReadLine());
-                            if (pulse < 0 || pulse > 300)
+                            int systolic;
+                            string systolicInput;
+                            int diastolic;
+                            string diastolicInput;
+                            int pulse;
+                            string pulseInput;
+
+                            do //nested do while loops to validate user inputs until validChoice is true at each collection point
                             {
-                                throw new Exception("Pulse must be between 0 and 300.");
-                            }
+                                Console.WriteLine("Enter your systolic pressure:");
+                                systolicInput = Console.ReadLine();
+                                if (!int.TryParse(systolicInput, out systolic) || systolic < 0 || systolic > 300)
+                                {
+                                    Console.WriteLine("Diastolic pressure must be a number between 0 and 200. Please try again.");
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            } while (true);
+
+                            do //nested do while loops to validate user inputs until validChoice is true at each collection point
+                            {
+                                Console.WriteLine("Enter your diastolic pressure:");
+                                diastolicInput = Console.ReadLine();
+                                if (!int.TryParse(diastolicInput, out diastolic) || diastolic < 0 || diastolic > 200)
+                                {
+                                    Console.WriteLine("Diastolic pressure must be a number between 0 and 200. Please try again.");
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            } while (true);
+
+                            do //nested do while loops to validate user inputs until validChoice is true at each collection point
+                            {
+                                Console.WriteLine("Enter your pulse:");
+                                pulseInput = Console.ReadLine();
+                                if (!int.TryParse(pulseInput, out pulse) || pulse < 0 || pulse > 300)
+                                {
+                                    Console.WriteLine("Pulse must be a number between 0 and 300. Please try again.");
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            } while (true);
 
                             Console.WriteLine("Enter the date of the reading using one of the following formats - MM DD YYYY or MM-DD-YYYY:");
                             DateTime date = Convert.ToDateTime(Console.ReadLine());
                             if (date > DateTime.Now)
                             {
                                 throw new Exception("Date cannot be in the future.");
+
+                                //CONSIDER A NESTED DO WHILE LOOP TO CONTROL DATE INPUT FORMAT FURTHER LIKE ABOVE
                             }
-                                                        
+
                             validChoice = true;
                             break;
 
@@ -62,7 +90,7 @@ namespace BradProjectOne.PresentationLayer
                             break;
 
                         case 3:
-                            Console.WriteLine("DELETE A PREVIOUS ENTRY HERE"); // Placeholder
+                            Console.WriteLine("DELETE A PREVIOUS ENTRY HERE"); // consider confirming delete? Also return to main menu or exit option.
                             validChoice = true;
                             break;
 
