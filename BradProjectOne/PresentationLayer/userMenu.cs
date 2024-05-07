@@ -79,6 +79,8 @@ namespace BradProjectOne.PresentationLayer
                                 throw new Exception("Date cannot be in the future.");
 
                                 //CONSIDER A NESTED DO WHILE LOOP TO CONTROL DATE INPUT FORMAT FURTHER LIKE ABOVE
+                                //would need to variables  at start, and then in nested looop parse to validate and convert readline(check what to use
+                                //instead of !int for data type) to datetime, then if it fails, display message and loop back to start of nested loop.
                             }
 
                             validChoice = true;
