@@ -29,6 +29,8 @@ namespace BradProjectOne.PresentationLayer
                             string diastolicInput;
                             int pulse;
                             string pulseInput;
+                            DateTime date;
+                            string dateInput;
 
                             do //nested do while loops to validate user inputs until validChoice is true at each collection point
                             {
@@ -72,23 +74,26 @@ namespace BradProjectOne.PresentationLayer
                                 }
                             } while (true);
 
-                            Console.WriteLine("Enter the date of the reading using one of the following formats - MM DD YYYY or MM-DD-YYYY:");
-                            DateTime date = Convert.ToDateTime(Console.ReadLine());
-                            if (date > DateTime.Now)
+                            do //nested do while loops to validate user inputs until validChoice is true at each collection point
                             {
-                                throw new Exception("Date cannot be in the future.");
-
-                                //CONSIDER A NESTED DO WHILE LOOP TO CONTROL DATE INPUT FORMAT FURTHER LIKE ABOVE
-                                //would need to variables  at start, and then in nested looop parse to validate and convert readline(check what to use
-                                //instead of !int for data type) to datetime, then if it fails, display message and loop back to start of nested loop.
-                            }
+                                Console.WriteLine("Enter the date of the reading using one of the following formats - MM DD YYYY or MM-DD-YYYY:");
+                                dateInput = Console.ReadLine();
+                                if (!DateTime.TryParse(dateInput, out date) || date > DateTime.Now)
+                                {
+                                    Console.WriteLine("Date must be one of the following formats - MM DD YYYY or MM-DD-YYYY, and cannot be in the future. Please try again");
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            } while (true);
 
                             validChoice = true;
                             break;
 
                         case 2:
                             Console.WriteLine("DISPLAY ALL PREVIOUS READINGS HERE"); // Placeholder
-                            validChoice = true;  //Would you like to return to the main menu or exit at this point option.
+                            validChoice = true;  //Would like to return to the main menu or exit at this point option.
                             break;
 
                         case 3:
