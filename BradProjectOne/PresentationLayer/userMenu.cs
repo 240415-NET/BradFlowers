@@ -80,7 +80,7 @@ namespace BradProjectOne.PresentationLayer
                                 dateInput = Console.ReadLine();
                                 if (!DateTime.TryParse(dateInput, out date) || date > DateTime.Now)
                                 {
-                                    Console.WriteLine("Date must be one of the following formats - MM DD YYYY or MM-DD-YYYY, and cannot be in the future. Please try again");
+                                    Console.WriteLine("Date must be one of the following formats - MM DD YYYY or MM-DD-YYYY, and cannot be in the future. Please try again.");
                                 }
                                 else
                                 {
