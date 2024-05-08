@@ -7,7 +7,7 @@ namespace BradProjectOne.PresentationLayer
             int returnMenuChoice = 0;  // collecting choice inputs
             bool validChoice = true; // validating choice inputs to continue or break in switch statement
 
-            Console.WriteLine("Welcome back! Please select an option:");
+            Console.WriteLine("Please select an option:");
             Console.WriteLine("1 Enter new blood pressure reading");
             Console.WriteLine("2 View all previous readings");
             Console.WriteLine("3 Delete a previous entry");

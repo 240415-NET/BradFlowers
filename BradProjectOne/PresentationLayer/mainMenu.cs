@@ -29,12 +29,12 @@ public class MainMenu
                         UserCreationMenu(); //calling user creation menu method
 
                         break;
-                    case 2:
+                    case 2: //FIGURE OUT ADDING NAME RATHER THAN REFERRING TO THEM AS
                         Console.WriteLine("Welcome back user!");
                         validChoice = true;
 
                         break;
-                    case 3:
+                    case 3: //NEED TO FIGURE OUT HOW TO TERMINATE PROGRAM HERE. RIGHT NOW WHEN SELECTED IT TAKES YOU TO THE RETURNING USER MENU
                         Console.WriteLine("Exiting program");
                         validChoice = true;
                         return;
