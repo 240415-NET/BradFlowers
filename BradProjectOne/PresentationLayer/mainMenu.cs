@@ -26,17 +26,20 @@ public class MainMenu
                     case 1:
                         Console.WriteLine("New user selected");
                         validChoice = true;
-                        UserCreationMenu(); //calling user creation menu method
+                        MainMenu.UserCreationMenu(); //calling user creation menu method
 
                         break;
-                    case 2: //FIGURE OUT ADDING NAME RATHER THAN REFERRING TO THEM AS
+                    case 2: //IS METHOD CALL NEEDED?  WHEN NOT COMMENTED OUT IT LOOPS THE USERMENU TWICE, BUT FEELS LIKE WE SHOULD HAVE IT THERE?
+                            //FIGURE OUT ADDING NAME RATHER THAN REFERRING TO THEM AS USER
                         Console.WriteLine("Welcome back user!");
                         validChoice = true;
+                        //UserMenu.returningUserMenu(); //calling returning user menu method
 
                         break;
                     case 3: //NEED TO FIGURE OUT HOW TO TERMINATE PROGRAM HERE. RIGHT NOW WHEN SELECTED IT TAKES YOU TO THE RETURNING USER MENU
                         Console.WriteLine("Exiting program");
                         validChoice = true;
+                        Environment.Exit(0); //exits the program
                         return;
                     default:
                         Console.WriteLine("Please enter a valid number.");
