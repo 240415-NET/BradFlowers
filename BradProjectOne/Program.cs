@@ -6,7 +6,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        MainMenu.startMenu();
-        UserMenu.returningUserMenu();
+        var mainMenu = new MainMenu(); //creating an instance of the main menu
+        mainMenu.StartMenu();//calling the start menu method
     }
 }

@@ -3,14 +3,14 @@ using BradProjectOne.ControllersLayer;
 
 public class MainMenu
 {
-    public static void startMenu()
+    public void StartMenu()
     {
         int mainMenuChoice = 0; // collecting choice input
         bool validChoice = true; // validating choice input to continue or break in switch statement
 
         Console.Clear();
         Console.WriteLine("Welcome to the Blood Pressure Tracker!");
-        Console.WriteLine("Please select an option by entering number:");
+        Console.WriteLine("Please select an option by entering a number:\n");
         Console.WriteLine("1 New user?");
         Console.WriteLine("2 Returning user?");
         Console.WriteLine("3 Exit");
@@ -26,18 +26,21 @@ public class MainMenu
                     case 1:
                         Console.WriteLine("New user selected");
                         validChoice = true;
-                        MainMenu.UserCreationMenu(); //calling user creation menu method
+                        UserMenu.UserCreationMenu(); //calling user creation menu method
 
                         break;
-                    case 2: //IS METHOD CALL NEEDED?  WHEN NOT COMMENTED OUT IT LOOPS THE USERMENU TWICE, BUT FEELS LIKE WE SHOULD HAVE IT THERE?
-                            //FIGURE OUT ADDING NAME RATHER THAN REFERRING TO THEM AS USER
-                        Console.WriteLine("Welcome back user!");
+                    case 2: 
+                        //FIGURE OUT ADDING NAME RATHER THAN REFERRING TO THEM AS USER
+                        Console.WriteLine("\nWelcome back user's name!");
                         validChoice = true;
-                        //UserMenu.returningUserMenu(); //calling returning user menu method
+
+                        //WILL NEED OT VALIDATE/ASK FOR USER NAME BEFORE GOING RIGHT TO RETURNING USER MENU
+
+                        UserMenu.ReturningUserMenu(); //calling returning user menu method
 
                         break;
-                    case 3: //NEED TO FIGURE OUT HOW TO TERMINATE PROGRAM HERE. RIGHT NOW WHEN SELECTED IT TAKES YOU TO THE RETURNING USER MENU
-                        Console.WriteLine("Exiting program");
+                    case 3: 
+                        Console.WriteLine("\nThanks for visiting. Exiting the program.");
                         validChoice = true;
                         Environment.Exit(0); //exits the program
                         return;
@@ -51,48 +54,14 @@ public class MainMenu
             {
                 validChoice = false;
                 Console.WriteLine(ex);  // might not need to display the message to end user, but it's helpful for debugging, will remove later.
-                Console.WriteLine("\n Please enter a valid number."); // \n just creates a line, so in this case between exceptions and this line.
+                Console.WriteLine("\n Please enter a valid choice."); // \n just creates a line, so in this case between exceptions and this line.
             }
 
         } while (!validChoice);
 
     }
 
-    public static void UserCreationMenu() //method to create a new user
-    {
-        bool validChoice = true; // validating choice input to continue or break in switch statement
-        string userName = ""; // collecting user name input
-        do
-        {
-            {
-                Console.WriteLine("Welcome! Please enter a User Name:");
-                userName = Console.ReadLine().Trim(); //collecting user name input
 
-
-                if (String.IsNullOrEmpty(userName)) //if user name is null or empty, it will return false
-                {
-                    Console.WriteLine("User name cannot be blank. Please try again.");
-                    validChoice = false;
-                }
-                else if (UserProfileController.UserExists(userName)) //passing user name to user exists method in controller
-                {
-                    Console.WriteLine("User name already exists. Please try again.");
-                    validChoice = false;
-                }
-                else //if user name is not null or empty and does not exist, it will create a new user
-                {
-                    UserProfileController.CreateUser(userName); //passing user name to create user method in controller
-                    Console.WriteLine($"User Name {userName} has been successfully created!");
-                    validChoice = true;
-
-                }
-    
-
-            }
-        } while (!validChoice);
-
-
-    }
 }
 
 
