@@ -3,7 +3,7 @@ using BradProjectOne.ControllersLayer;
 
     public class UserMenu
 {
-    public void ReturningUserMenu()
+    public static void ReturningUserMenu()
     {
         int returnMenuChoice = 0;  // collecting choice inputs
         bool validChoice = true; // validating choice inputs to continue or break in switch statement
@@ -125,7 +125,7 @@ using BradProjectOne.ControllersLayer;
 
     }
 
-public void UserCreationMenu() //method to create a new user
+public static void UserCreationMenu() //method to create a new user
 {
     bool validChoice = true; // validating choice input to continue or break in switch statement
     string userName = ""; // collecting user name input
@@ -154,7 +154,7 @@ public void UserCreationMenu() //method to create a new user
                 Console.WriteLine($"Your account with User Name {userName} has been successfully created!");
                 validChoice = true;
 
-                UserMenu.ReturningUserMenu(); //calling user creation menu method
+                ReturningUserMenu(); //calling user creation menu method
             
             }
 

@@ -1,5 +1,6 @@
 using BradProjectOne.Models;
 using BradProjectOne.PresentationLayer;
+using BradProjectOne.DataAccessLayer;
 
 namespace BradProjectOne.ControllersLayer
 {
@@ -7,8 +8,8 @@ namespace BradProjectOne.ControllersLayer
     {
         public static void CreateUser(string userName)
         {
-
             UserProfile newUser = new UserProfile(userName); // Creates a new user profile from the model
+            UserRepository.createUser(newUser); // Calls the create user method from the repository
 
         }
 
