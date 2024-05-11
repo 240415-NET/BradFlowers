@@ -8,10 +8,10 @@ namespace BradProjectOne.Models
         public string userName { get; set; }
 
         public UserProfile() { } //probably don't need this
-        public UserProfile(string _userName)
+        public UserProfile(string theUserName)
         {
             userId = Guid.NewGuid(); // Generates a new userID for the user
-            userName = _userName;
+            userName = theUserName;
         }
 
     }
