@@ -15,14 +15,20 @@ namespace BradProjectOne.ControllersLayer
 
         public static bool UserExists(string userName)
         {
+            
+            if (UserRepository.RetrieveUser(userName) != null)
+            {
+                return true;
+            }
+            
             return false;
         }
 
 
-        public static void GetReturningUser()
-        {
+        // public static void GetReturningUser()
+        // {
 
-        }
+        // }
 
 
     }

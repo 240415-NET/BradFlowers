@@ -1,7 +1,7 @@
 namespace BradProjectOne.PresentationLayer;
 using BradProjectOne.ControllersLayer;
 
-    public class UserMenu
+public class UserMenu
 {
     public static void ReturningUserMenu()
     {
@@ -125,43 +125,42 @@ using BradProjectOne.ControllersLayer;
 
     }
 
-public static void UserCreationMenu() //method to create a new user
-{
-    bool validChoice = true; // validating choice input to continue or break in switch statement
-    string userName = ""; // collecting user name input
-    do
+    public static void UserCreationMenu() //method to create a new user
     {
+        bool validChoice = true; // validating choice input to continue or break in switch statement
+        string userInput = ""; // collecting user name input
+        do
         {
+
             Console.Clear();
             Console.WriteLine("\nWelcome! Please enter a User Name:");
-            userName = Console.ReadLine().Trim(); //collecting user name input
+            userInput = Console.ReadLine().Trim(); //collecting user name input
 
-
-            if (String.IsNullOrEmpty(userName)) //if user name is null or empty, it will return false
+            if (String.IsNullOrEmpty(userInput)) //if user name is null or empty, it will return false
             {
                 Console.WriteLine("User name cannot be blank. Please try again.");
                 validChoice = false;
             }
-            else if (UserProfileController.UserExists(userName)) //passing user name to user exists method in controller
+            else if (UserProfileController.UserExists(userInput)) //passing user name to user exists method in controller
             {
                 Console.WriteLine("User name already exists. Please try again.");
                 validChoice = false;
             }
             else //if user name is not null or empty and does not exist, it will create a new user
             {
-                UserProfileController.CreateUser(userName); //passing user name to create user method in controller
+                UserProfileController.CreateUser(userInput); //passing user name to create user method in controller
                 Console.Clear();
-                Console.WriteLine($"Your account with User Name {userName} has been successfully created!");
+                Console.WriteLine($"Your account with User Name {userInput} has been successfully created!");
                 validChoice = true;
 
                 ReturningUserMenu(); //calling user creation menu method
-            
+
             }
 
 
-        }
-    } while (!validChoice);
+
+        } while (!validChoice);
 
 
-}
+    }
 }
