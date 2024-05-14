@@ -1,9 +1,6 @@
 namespace BradProjectOne.PresentationLayer;
 using BradProjectOne.ControllersLayer;
 
-//TESTING MERGES ONLY WITH THIS COMMENT ADDED
-
-
 public class MainMenu
 {
     public void StartMenu()
