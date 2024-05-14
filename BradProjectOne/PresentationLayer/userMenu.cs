@@ -132,9 +132,10 @@ public class UserMenu
         do
         {
 
-            Console.Clear();
+            //Console.Clear(); //-- DO NOT DO THIS OR IT LOOKS LIKE AN ENDLESS LOOP WHEN ONE OF THE FALSE STATEMENTS IS MET
             Console.WriteLine("\nWelcome! Please enter a User Name:");
             userInput = Console.ReadLine().Trim(); //collecting user name input
+            Console.Clear();
 
             if (String.IsNullOrEmpty(userInput)) //if user name is null or empty, it will return false
             {
@@ -144,7 +145,8 @@ public class UserMenu
             else if (UserProfileController.UserExists(userInput)) //passing user name to user exists method in controller
             {
                 Console.WriteLine("User name already exists. Please try again.");
-                validChoice = false;
+                validChoice = false; //THIS DOESN'T SEEM RIGHT BUT BETTER THAN BEING FALSE????????
+
             }
             else //if user name is not null or empty and does not exist, it will create a new user
             {
