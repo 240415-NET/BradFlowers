@@ -3,10 +3,10 @@ using BradProjectOne.Models;
 using System.Text.Json;
 
 
-public class UserRepository
+public class JsonUserRepository : IUserStorageRepo
 {
     public static string filePath = "./DataAccessLayer/UsersFile.json";
-    public static void createUser(UserProfile user)
+    public void createUser(UserProfile user)
     {
 
         //string filePath = "./DataAccessLayer/UsersFile.json"; DELETE THIS LINE
@@ -34,7 +34,7 @@ public class UserRepository
         }
 
     }
-    public static UserProfile RetrieveUser(string userNameToFind)
+    public UserProfile RetrieveUser(string userNameToFind)
     {
         UserProfile foundUser = new UserProfile();
 
