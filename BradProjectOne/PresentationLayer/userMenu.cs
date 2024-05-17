@@ -7,6 +7,8 @@ public class UserMenu
     {
         int returnMenuChoice = 0;  // collecting choice inputs
         bool validChoice = true; // validating choice inputs to continue or break in switch statement
+        
+        //NEED TO CALL GetUser METHOD ON CONTROLLERS TO VALIDATE
 
         Console.WriteLine("\nPlease select an option:"); //HOW CAN I ADD NAME HERE?
         Console.WriteLine("\n1 Enter new blood pressure reading");

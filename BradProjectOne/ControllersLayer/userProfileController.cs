@@ -23,7 +23,7 @@ namespace BradProjectOne.ControllersLayer
 
         }
 
-        public static bool UserExists(string userName)
+        public static bool UserExists(string userName) //method to check if user exists UPDATE PRESENTATION LAYER FOR COLLECTING NAME
         {
             
             if (_userData.RetrieveUser(userName) != null)
@@ -35,10 +35,13 @@ namespace BradProjectOne.ControllersLayer
         }
 
 
-        // public static void GetReturningUser()
-        // {
+        public static UserProfile GetUser(string userName)
+        {
+        
+            return _userData.RetrieveUser(userName);
 
-        // }
+
+        }
 
 
     }
