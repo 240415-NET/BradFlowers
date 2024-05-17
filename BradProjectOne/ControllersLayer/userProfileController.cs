@@ -1,5 +1,4 @@
 using BradProjectOne.Models;
-using BradProjectOne.PresentationLayer;
 using BradProjectOne.DataAccessLayer;
 
 namespace BradProjectOne.ControllersLayer
@@ -23,7 +22,7 @@ namespace BradProjectOne.ControllersLayer
 
         }
 
-        public static bool UserExists(string userName) //method to check if user exists UPDATE PRESENTATION LAYER FOR COLLECTING NAME
+        public static bool UserExists(string userName) //method to check if user exists
         {
             
             if (_userData.RetrieveUser(userName) != null)
@@ -35,7 +34,7 @@ namespace BradProjectOne.ControllersLayer
         }
 
 
-        public static UserProfile GetUser(string userName)
+        public static UserProfile GetUser(string userName)  
         {
         
             return _userData.RetrieveUser(userName);
