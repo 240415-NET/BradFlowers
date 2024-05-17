@@ -6,7 +6,7 @@ using System.Text.Json;
 public class JsonUserRepository : IUserStorageRepo
 {
     public static string filePath = "./DataAccessLayer/UsersFile.json";
-    public void createUser(UserProfile user)
+    public void CreateUser(UserProfile user)
     {
 
         //string filePath = "./DataAccessLayer/UsersFile.json"; DELETE THIS LINE
@@ -25,8 +25,11 @@ public class JsonUserRepository : IUserStorageRepo
         {
 
             string existingUsersJson = File.ReadAllText(filePath); //reading json string from file
-            List<UserProfile> existingUsersList = JsonSerializer.Deserialize<List<UserProfile>>(existingUsersJson); //deserializing json string to list
-
+            var existingUsersList = JsonSerializer.Deserialize<List<UserProfile>>(existingUsersJson); //deserializing json string to list
+            if (existingUsersList == null)
+            {
+                existingUsersList = new List<UserProfile>();
+            }
             existingUsersList.Add(user); //adding user to list
             string jsonUsersString = JsonSerializer.Serialize(existingUsersList); //serializing list to json string
             File.WriteAllText(filePath, jsonUsersString); //writing json string to a file
@@ -34,10 +37,9 @@ public class JsonUserRepository : IUserStorageRepo
         }
 
     }
-    public UserProfile RetrieveUser(string userNameToFind)
+    public UserProfile? RetrieveUser(string userNameToFind)
     {
-        UserProfile foundUser = new UserProfile();
-
+        
         /*need to read the string from .json file
         then need to serialize string back into a list
         then need to search the list for the user
@@ -48,9 +50,9 @@ public class JsonUserRepository : IUserStorageRepo
             //string filePath = "./DataAccessLayer/UsersFile.json"; DELETE THIS LINE
             string existingUsersJson = File.ReadAllText(filePath);
 
-            List<UserProfile> existingUsersList = JsonSerializer.Deserialize<List<UserProfile>>(existingUsersJson); //deserializing json string to list
+            var existingUsersList = JsonSerializer.Deserialize<List<UserProfile>>(existingUsersJson); //deserializing json string to list
 
-            foundUser = existingUsersList.FirstOrDefault(user => user.userName == userNameToFind); //searching list for user with Lambda; works same as foreach below
+            return existingUsersList?.FirstOrDefault(user => user.userName == userNameToFind); //searching list for user with Lambda; works same as foreach below
 
             // foreach (User user in existingUsersList){
             //     if(user.userName == usernameToFind)
@@ -64,7 +66,7 @@ public class JsonUserRepository : IUserStorageRepo
         {
             Console.WriteLine(e.Message);
         }
-        return foundUser;
+        return null;
 
 
 

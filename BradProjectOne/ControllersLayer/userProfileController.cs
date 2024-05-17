@@ -19,7 +19,7 @@ namespace BradProjectOne.ControllersLayer
         public static void CreateUser(string userName)
         {
             UserProfile newUser = new UserProfile(userName); // Creates a new user profile from the model
-            _userData.createUser(newUser); // Calls the create user method from the repository
+            _userData.CreateUser(newUser); // Calls the create user method from the repository
 
         }
 
