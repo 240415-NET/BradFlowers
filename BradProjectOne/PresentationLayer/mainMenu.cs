@@ -29,17 +29,13 @@ public class MainMenu
                         UserMenu.UserCreationMenu(); //calling user creation menu method
 
                         break;
-                    case 2: 
-                        //FIGURE OUT ADDING NAME RATHER THAN REFERRING TO THEM AS USER
-                        Console.WriteLine("\nWelcome back user's name!");
+                    case 2:
+                        Console.WriteLine("Returning user selected");
+                        UserMenu.UserLoginVerification();
                         validChoice = true;
-
-                        //WILL NEED OT VALIDATE/ASK FOR USER NAME BEFORE GOING RIGHT TO RETURNING USER MENU
-
-                        UserMenu.ReturningUserMenu(); //calling returning user menu method
-
+                        
                         break;
-                    case 3: 
+                    case 3:
                         Console.WriteLine("\nThanks for visiting. Exiting the program.");
                         validChoice = true;
                         Environment.Exit(0); //exits the program

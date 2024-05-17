@@ -3,12 +3,53 @@ using BradProjectOne.ControllersLayer;
 
 public class UserMenu
 {
+
+    public static void UserLoginVerification()
+    {
+        bool validChoice = true; // validating choice input to continue or break in switch statement
+        string userName = ""; // collecting user name input
+
+        do
+        {
+            Console.WriteLine("\nWelcome back! Please enter your User Name:");
+            userName = Console.ReadLine().Trim(); //collecting user name input
+
+
+            if (String.IsNullOrEmpty(userName)) //if user name is null or empty, it will return false
+            {
+                Console.WriteLine("User name cannot be blank. Please try again.");
+                validChoice = false;
+            }
+            else if (!UserProfileController.UserExists(userName)) //passing user name to user exists method in controller
+            {
+                Console.WriteLine("User name does not exist. Please try again.");
+                validChoice = false; 
+
+            }
+            else //if user name is not null or empty and does not exist, it will create a new user
+            {
+                Console.WriteLine($"Welcome back {userName}!");
+                validChoice = true;
+
+                ReturningUserMenu(); //calling user creation menu method
+
+            }
+
+        } while (!validChoice);
+
+        //NEED TO CALL GetUser METHOD ON CONTROLLERS TO VALIDATE
+
+
+
+    }
+
     public static void ReturningUserMenu()
     {
         int returnMenuChoice = 0;  // collecting choice inputs
         bool validChoice = true; // validating choice inputs to continue or break in switch statement
-        
-        //NEED TO CALL GetUser METHOD ON CONTROLLERS TO VALIDATE
+
+
+
 
         Console.WriteLine("\nPlease select an option:"); //HOW CAN I ADD NAME HERE?
         Console.WriteLine("\n1 Enter new blood pressure reading");
@@ -73,6 +114,7 @@ public class UserMenu
                             }
                             else
                             {
+                                
                                 break;
                             }
                         } while (true);
@@ -123,8 +165,9 @@ public class UserMenu
                 Console.WriteLine("\n Please enter a valid number.");
             }
 
-        } while (!validChoice);
 
+        } while (!validChoice);
+        
     }
 
     public static void UserCreationMenu() //method to create a new user
