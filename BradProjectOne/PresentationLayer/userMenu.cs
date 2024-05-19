@@ -1,5 +1,6 @@
 namespace BradProjectOne.PresentationLayer;
 using BradProjectOne.ControllersLayer;
+using BradProjectOne.Models;
 
 public class UserMenu
 {
@@ -23,7 +24,7 @@ public class UserMenu
             else if (!UserProfileController.UserExists(userName)) //passing user name to user exists method in controller
             {
                 Console.WriteLine("User name does not exist. Please try again.");
-                validChoice = false; 
+                validChoice = false;
 
             }
             else //if user name is not null or empty and does not exist, it will create a new user
@@ -67,74 +68,8 @@ public class UserMenu
                 {
                     case 1:
 
-                        int systolic;
-                        string systolicInput;
-                        int diastolic;
-                        string diastolicInput;
-                        int pulse;
-                        string pulseInput;
-                        DateTime date;
-                        string dateInput;
-
-                        do //nested do while loops to validate user inputs until validChoice is true at each collection point
-                        {
-                            Console.WriteLine("\nEnter your systolic pressure:");
-                            systolicInput = Console.ReadLine();
-                            if (!int.TryParse(systolicInput, out systolic) || systolic < 0 || systolic > 300)
-                            {
-                                Console.WriteLine("\nSystolic pressure must be a number between 0 and 300. Please try again.");
-                            }
-                            else
-                            {
-                                break;
-                            }
-                        } while (true);
-
-                        do //nested do while loops to validate user inputs until validChoice is true at each collection point
-                        {
-                            Console.WriteLine("\nThanks! Now enter your diastolic pressure:");
-                            diastolicInput = Console.ReadLine();
-                            if (!int.TryParse(diastolicInput, out diastolic) || diastolic < 0 || diastolic > 200)
-                            {
-                                Console.WriteLine("\nDiastolic pressure must be a number between 0 and 200. Please try again.");
-                            }
-                            else
-                            {
-                                break;
-                            }
-                        } while (true);
-
-                        do //nested do while loops to validate user inputs until validChoice is true at each collection point
-                        {
-                            Console.WriteLine("\nAnd please enter your pulse:");
-                            pulseInput = Console.ReadLine();
-                            if (!int.TryParse(pulseInput, out pulse) || pulse < 0 || pulse > 300)
-                            {
-                                Console.WriteLine("\nPulse must be a number between 0 and 300. Please try again.");
-                            }
-                            else
-                            {
-                                
-                                break;
-                            }
-                        } while (true);
-
-                        do //nested do while loops to validate user inputs until validChoice is true at each collection point
-                        {
-                            Console.WriteLine("\nFinally, enter the date of the reading using one of the following formats - MM DD YYYY or MM-DD-YYYY:");
-                            dateInput = Console.ReadLine();
-                            if (!DateTime.TryParse(dateInput, out date) || date > DateTime.Now)
-                            {
-                                Console.WriteLine("\nDate must be one of the following formats - MM DD YYYY or MM-DD-YYYY, and cannot be in the future. Please try again.");
-                            }
-                            else
-                            {
-                                break;
-                            }
-                        } while (true);
-
-                        validChoice = true;
-                        break;
+                    UserMenu.NewBpReading(); //calling new blood pressure reading method
+                    break;
 
                     case 2:
                         Console.WriteLine("DISPLAY ALL PREVIOUS READINGS HERE"); // Placeholder
@@ -156,6 +91,7 @@ public class UserMenu
                         Console.WriteLine("\nPlease enter a valid number.");
                         validChoice = false;
                         break;
+ 
                 }
             }
             catch (Exception message)
@@ -167,7 +103,83 @@ public class UserMenu
 
 
         } while (!validChoice);
-        
+
+    }
+
+    public static void NewBpReading()
+    {
+        int systolic;
+        string systolicInput;
+        int diastolic;
+        string diastolicInput;
+        int pulse;
+        string pulseInput;
+        DateTime date;
+        string dateInput;
+        bool validChoice = true;
+
+        do //nested do while loops to validate user inputs until validChoice is true at each collection point
+        {
+            Console.WriteLine("\nEnter your systolic pressure:");
+            systolicInput = Console.ReadLine();
+            if (!int.TryParse(systolicInput, out systolic) || systolic < 0 || systolic > 300)
+            {
+                Console.WriteLine("\nSystolic pressure must be a number between 0 and 300. Please try again.");
+            }
+            else
+            {
+                break;
+            }
+        } while (true);
+
+        do //nested do while loops to validate user inputs until validChoice is true at each collection point
+        {
+            Console.WriteLine("\nThanks! Now enter your diastolic pressure:");
+            diastolicInput = Console.ReadLine();
+            if (!int.TryParse(diastolicInput, out diastolic) || diastolic < 0 || diastolic > 200)
+            {
+                Console.WriteLine("\nDiastolic pressure must be a number between 0 and 200. Please try again.");
+            }
+            else
+            {
+                break;
+            }
+        } while (true);
+
+        do //nested do while loops to validate user inputs until validChoice is true at each collection point
+        {
+            Console.WriteLine("\nAnd please enter your pulse:");
+            pulseInput = Console.ReadLine();
+            if (!int.TryParse(pulseInput, out pulse) || pulse < 0 || pulse > 300)
+            {
+                Console.WriteLine("\nPulse must be a number between 0 and 300. Please try again.");
+            }
+            else
+            {
+
+                break;
+            }
+        } while (true);
+
+        do //nested do while loops to validate user inputs until validChoice is true at each collection point
+        {
+            Console.WriteLine("\nFinally, enter the date of the reading using one of the following formats - MM DD YYYY or MM-DD-YYYY:");
+            dateInput = Console.ReadLine();
+            if (!DateTime.TryParse(dateInput, out date) || date > DateTime.Now)
+            {
+                Console.WriteLine("\nDate must be one of the following formats - MM DD YYYY or MM-DD-YYYY, and cannot be in the future. Please try again.");
+            }
+            else
+            {
+                break;
+            }
+
+            
+        } while (true);
+
+        validChoice = true;
+
+        BloodPressureController.CreateBloodPressureRecord(systolic, diastolic, pulse, date); //passing user inputs to create blood pressure record method in controller
     }
 
     public static void UserCreationMenu() //method to create a new user
