@@ -7,15 +7,10 @@ namespace BradProjectOne.ControllersLayer;
 public class BloodPressureController
 {
     private static IBpRecordStorageRepo _bloodPressureRecord = new BloodPressureRecordRepository();
-
-    public BloodPressureController(IBpRecordStorageRepo bloodPressureRecordRepository)
+    
+    public static void CreateBloodPressureRecord(UserProfile user, Guid readingId, int systolic, int diastolic, int pulse, DateTime date)
     {
-        _bloodPressureRecord = bloodPressureRecordRepository;
-    }
-
-    public static void CreateBloodPressureRecord(Guid userId, string userName, Guid readingId, int systolic, int diastolic, int pulse, DateTime date)
-    {
-        BloodPressureRecord newBpReading = new BloodPressureRecord(userId, userName, readingId, systolic, diastolic, pulse, date); 
+        BloodPressureRecord newBpReading = new BloodPressureRecord(user.UserId, user.UserName, readingId, systolic, diastolic, pulse, date); 
         _bloodPressureRecord.createBloodPressureRecord(newBpReading);
     }
 

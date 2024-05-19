@@ -102,6 +102,9 @@ public class UserMenu
 
 
         } while (!validChoice);
+
+
+        //*****THIS SHOULD ALL PROBABLY BE MOVED INTO THE NewBpReading METHOD INSTEAD OF HERE*****BUT WORKS FOR NOW
         Console.WriteLine("\nThank you!  If you would like to return to the main menu, please press Enter.  Otherwise type 'exit' to quit.");
         string returnToMenu = Console.ReadLine().ToLower();
 
@@ -194,12 +197,12 @@ public class UserMenu
 
         validChoice = true;
 
-        BloodPressureController.CreateBloodPressureRecord(user.UserId, user.UserName, readingId, systolic, diastolic, pulse, date); //passing user inputs to create blood pressure record method in controller
+        BloodPressureController.CreateBloodPressureRecord(user, readingId, systolic, diastolic, pulse, date); //passing user inputs to create blood pressure record method in controller
     }
 
     public static void UserCreationMenu() //method to create a new user
     {
-        bool validChoice = true; // validating choice input to continue or break in switch statement
+        bool validChoice = true; // validating choice input t3o continue or break in switch statement
         string userInput = ""; // collecting user name input
         do
         {

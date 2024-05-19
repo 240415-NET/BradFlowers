@@ -1,5 +1,3 @@
-using BradProjectOne.PresentationLayer;
-
 namespace BradProjectOne.Models
 {
     public class UserProfile
