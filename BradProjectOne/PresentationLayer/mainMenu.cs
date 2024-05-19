@@ -26,14 +26,26 @@ public class MainMenu
                     case 1:
                         Console.WriteLine("New user selected");
                         validChoice = true;
-                        UserMenu.UserCreationMenu(); //calling user creation menu method
-
+                        try
+                        {
+                            UserMenu.UserCreationMenu(); //calling user creation menu method
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine($"An error occurred: {e.Message}");
+                        }
                         break;
                     case 2:
                         Console.WriteLine("Returning user selected");
-                        UserMenu.UserLoginVerification();
+                        try
+                        {
+                            UserMenu.UserLoginVerification();
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine($"An error occurred: {e.Message}");
+                        }
                         validChoice = true;
-                        
                         break;
                     case 3:
                         Console.WriteLine("\nThanks for visiting. Exiting the program.");
