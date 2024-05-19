@@ -45,13 +45,13 @@ public class UserMenu
 
     public static void ReturningUserMenu()
     {
-        int returnMenuChoice = 0;  // collecting choice inputs
+        int returnMenuChoice = 0;  
         bool validChoice = true; // validating choice inputs to continue or break in switch statement
 
 
 
 
-        Console.WriteLine("\nPlease select an option:"); //HOW CAN I ADD NAME HERE?
+        Console.WriteLine("\nPlease select an option:");
         Console.WriteLine("\n1 Enter new blood pressure reading");
         Console.WriteLine("2 View all previous readings");
         Console.WriteLine("3 Delete a previous entry");
@@ -72,11 +72,11 @@ public class UserMenu
 
                     case 2:
                         Console.WriteLine("DISPLAY ALL PREVIOUS READINGS HERE"); // Placeholder
-                        validChoice = true;  //Would like to return to the main menu or exit at this point option.
+                        validChoice = true;
                         break;
 
                     case 3:
-                        Console.WriteLine("DELETE A PREVIOUS ENTRY HERE"); // consider confirming delete? Also return to main menu or exit option.
+                        Console.WriteLine("DELETE A PREVIOUS ENTRY HERE"); // Placeholder
                         validChoice = true;
                         break;
 
@@ -90,7 +90,7 @@ public class UserMenu
                         Console.WriteLine("\nPlease enter a valid number.");
                         validChoice = false;
                         break;
- 
+
                 }
             }
             catch (Exception message)
@@ -102,6 +102,21 @@ public class UserMenu
 
 
         } while (!validChoice);
+        Console.WriteLine("\nThank you!  If you would like to return to the main menu, please press Enter.  Otherwise type 'exit' to quit.");
+        string returnToMenu = Console.ReadLine().ToLower();
+
+        if (returnToMenu == "exit" || returnToMenu == "no" || returnToMenu == "quit")
+        {
+            Console.WriteLine("\nThanks for visiting. Exiting the program.");
+            Environment.Exit(0); //exits the program
+            return;
+        }
+        else
+        {
+            Console.WriteLine("Returning to main menu.");
+            ReturningUserMenu(); //returning to main menu if user does not exit program
+        }
+
 
     }
 
@@ -174,7 +189,7 @@ public class UserMenu
                 break;
             }
 
-            
+
         } while (true);
 
         validChoice = true;

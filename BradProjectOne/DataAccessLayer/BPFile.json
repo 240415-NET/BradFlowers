@@ -16,5 +16,167 @@
         "Date": "2024-05-01T00:00:00",
         "UserId": "00000000-0000-0000-0000-000000000000",
         "UserName": null
+    },
+    {
+        "ReadingId": "87fb6610-db11-43fd-abc3-11caf45a5992",
+        "Systolic": 125,
+        "Diastolic": 91,
+        "Pulse": 81,
+        "Date": "2024-04-01T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "4dd0b2ce-e808-43be-b1a3-c98796c835ff",
+        "Systolic": 140,
+        "Diastolic": 99,
+        "Pulse": 78,
+        "Date": "2024-04-01T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "866914d3-a12e-44bc-aaa8-cd91359cd987",
+        "Systolic": 146,
+        "Diastolic": 90,
+        "Pulse": 80,
+        "Date": "2023-06-01T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "b6686549-9f8c-4711-8b67-16e562b24083",
+        "Systolic": 150,
+        "Diastolic": 90,
+        "Pulse": 78,
+        "Date": "0202-01-01T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "f412d547-8ea7-47d7-9476-1cee34a911b2",
+        "Systolic": 99,
+        "Diastolic": 70,
+        "Pulse": 70,
+        "Date": "2024-05-01T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "83bbca58-6a52-4779-ad04-59abcfb26984",
+        "Systolic": 143,
+        "Diastolic": 90,
+        "Pulse": 75,
+        "Date": "2023-08-01T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "a33fd59d-ef2a-4270-85cf-896af318f74f",
+        "Systolic": 151,
+        "Diastolic": 90,
+        "Pulse": 90,
+        "Date": "2024-02-02T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "547f6fc6-69bf-4257-b614-2d23a31b85bf",
+        "Systolic": 1,
+        "Diastolic": 145,
+        "Pulse": 90,
+        "Date": "2023-01-13T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "49b6a874-15d5-4871-8755-310beed880af",
+        "Systolic": 135,
+        "Diastolic": 80,
+        "Pulse": 91,
+        "Date": "2024-05-05T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "9089f392-686f-4b49-9336-be8346855ffe",
+        "Systolic": 135,
+        "Diastolic": 1,
+        "Pulse": 53,
+        "Date": "2024-03-01T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "07100a00-ee69-49ba-a2da-bf845755292b",
+        "Systolic": 123,
+        "Diastolic": 90,
+        "Pulse": 80,
+        "Date": "0202-01-01T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "13476fd0-46b7-4188-b766-8cdda3137c2b",
+        "Systolic": 90,
+        "Diastolic": 80,
+        "Pulse": 90,
+        "Date": "2024-04-11T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "dded37df-3f4d-4e49-b931-a281c2a99b96",
+        "Systolic": 150,
+        "Diastolic": 30,
+        "Pulse": 30,
+        "Date": "2024-02-02T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "088bc11f-e2e2-486e-8b79-545216563b9b",
+        "Systolic": 123,
+        "Diastolic": 60,
+        "Pulse": 90,
+        "Date": "2024-03-01T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "fc3db7b4-c644-49df-ae73-d2ab21224264",
+        "Systolic": 145,
+        "Diastolic": 60,
+        "Pulse": 60,
+        "Date": "2023-04-02T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "f3d03e18-a09b-4799-a7f1-166e4dc2538c",
+        "Systolic": 123,
+        "Diastolic": 32,
+        "Pulse": 90,
+        "Date": "2023-08-01T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "4dd041d2-81f9-49b8-8bc7-590fc2d1912d",
+        "Systolic": 45,
+        "Diastolic": 45,
+        "Pulse": 45,
+        "Date": "2024-02-20T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "39b5af3f-2970-4fd3-a83a-af5f8b43ca27",
+        "Systolic": 123,
+        "Diastolic": 12,
+        "Pulse": 12,
+        "Date": "2023-09-01T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
     }
 ]
