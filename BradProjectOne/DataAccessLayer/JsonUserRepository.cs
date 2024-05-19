@@ -50,7 +50,7 @@ public class JsonUserRepository : IUserStorageRepo
 
             List<UserProfile> existingUsersList = JsonSerializer.Deserialize<List<UserProfile>>(existingUsersJson); //deserializing json string to list
 
-            foundUser = existingUsersList.FirstOrDefault(user => user.userName == userNameToFind); //searching list for user with Lambda; works same as foreach below
+            foundUser = existingUsersList.FirstOrDefault(user => user.UserName == userNameToFind); //searching list for user with Lambda; works same as foreach below
 
             // foreach (User user in existingUsersList){
             //     if(user.userName == usernameToFind)

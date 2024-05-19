@@ -32,8 +32,7 @@ public class UserMenu
                 Console.WriteLine($"Welcome back {userName}!");
                 validChoice = true;
 
-                ReturningUserMenu(); //calling user creation menu method
-
+                ReturningUserMenu();
             }
 
         } while (!validChoice);
@@ -67,9 +66,9 @@ public class UserMenu
                 switch (returnMenuChoice)
                 {
                     case 1:
-
-                    UserMenu.NewBpReading(); //calling new blood pressure reading method
-                    break;
+                        UserProfile user = new UserProfile(); // create a new instance of UserProfile
+                        UserMenu.NewBpReading(user); // pass the 'user' argument to the method
+                        break;
 
                     case 2:
                         Console.WriteLine("DISPLAY ALL PREVIOUS READINGS HERE"); // Placeholder
@@ -106,7 +105,7 @@ public class UserMenu
 
     }
 
-    public static void NewBpReading()
+    public static void NewBpReading(UserProfile user)
     {
         int systolic;
         string systolicInput;
@@ -117,6 +116,7 @@ public class UserMenu
         DateTime date;
         string dateInput;
         bool validChoice = true;
+        Guid readingId = Guid.NewGuid();
 
         do //nested do while loops to validate user inputs until validChoice is true at each collection point
         {
@@ -179,7 +179,7 @@ public class UserMenu
 
         validChoice = true;
 
-        BloodPressureController.CreateBloodPressureRecord(systolic, diastolic, pulse, date); //passing user inputs to create blood pressure record method in controller
+        BloodPressureController.CreateBloodPressureRecord(user.UserId, user.UserName, readingId, systolic, diastolic, pulse, date); //passing user inputs to create blood pressure record method in controller
     }
 
     public static void UserCreationMenu() //method to create a new user
@@ -188,8 +188,6 @@ public class UserMenu
         string userInput = ""; // collecting user name input
         do
         {
-
-            //Console.Clear(); //-- DO NOT DO THIS OR IT LOOKS LIKE AN ENDLESS LOOP WHEN ONE OF THE FALSE STATEMENTS IS MET
             Console.WriteLine("\nWelcome! Please enter a User Name:");
             userInput = Console.ReadLine().Trim(); //collecting user name input
             Console.Clear();
@@ -202,7 +200,7 @@ public class UserMenu
             else if (UserProfileController.UserExists(userInput)) //passing user name to user exists method in controller
             {
                 Console.WriteLine("User name already exists. Please try again.");
-                validChoice = false; //THIS DOESN'T SEEM RIGHT BUT BETTER THAN BEING FALSE????????
+                validChoice = false;
 
             }
             else //if user name is not null or empty and does not exist, it will create a new user
@@ -212,8 +210,7 @@ public class UserMenu
                 Console.WriteLine($"Your account with User Name {userInput} has been successfully created!");
                 validChoice = true;
 
-                ReturningUserMenu(); //calling user creation menu method
-
+                ReturningUserMenu();
             }
 
 

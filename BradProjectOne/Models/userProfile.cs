@@ -4,14 +4,20 @@ namespace BradProjectOne.Models
 {
     public class UserProfile
     {
-        public Guid userId { get; set; }
-        public string userName { get; set; }
+        public Guid UserId { get; set; }
+        public string UserName { get; set; }
 
         public UserProfile() {}
-        public UserProfile(string theUserName)
+        public UserProfile(string _userName)
         {
-            userId = Guid.NewGuid(); // Generates a new userID for the user
-            userName = theUserName;
+            UserId = Guid.NewGuid();
+            UserName = _userName;
+        }
+
+        public UserProfile(Guid _userId, string _userName)
+        {
+            UserId = _userId;
+            UserName = _userName;
         }
 
     }

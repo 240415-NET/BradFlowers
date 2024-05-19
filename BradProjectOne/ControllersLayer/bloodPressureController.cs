@@ -13,9 +13,9 @@ public class BloodPressureController
         _bloodPressureRecord = bloodPressureRecordRepository;
     }
 
-    public static void CreateBloodPressureRecord(int systolic, int diastolic, int pulse, DateTime date)
+    public static void CreateBloodPressureRecord(Guid userId, string userName, Guid readingId, int systolic, int diastolic, int pulse, DateTime date)
     {
-        BloodPressureRecord newBpReading = new BloodPressureRecord(systolic, diastolic, pulse, date); 
+        BloodPressureRecord newBpReading = new BloodPressureRecord(userId, userName, readingId, systolic, diastolic, pulse, date); 
         _bloodPressureRecord.createBloodPressureRecord(newBpReading);
     }
 

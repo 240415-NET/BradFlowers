@@ -1,8 +1,20 @@
 [
     {
-        "Systolic": 125,
-        "Diastolic": 80,
-        "Pulse": 80,
-        "Date": "2024-05-17T00:00:00"
+        "ReadingId": "9df64822-4e36-4602-9830-1298b623ce7f",
+        "Systolic": 123,
+        "Diastolic": 89,
+        "Pulse": 74,
+        "Date": "2024-03-03T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
+    },
+    {
+        "ReadingId": "91677017-3ba2-4be1-afbb-9c8d7bba1197",
+        "Systolic": 128,
+        "Diastolic": 87,
+        "Pulse": 94,
+        "Date": "2024-05-01T00:00:00",
+        "UserId": "00000000-0000-0000-0000-000000000000",
+        "UserName": null
     }
 ]
