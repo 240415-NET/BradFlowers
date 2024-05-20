@@ -9,12 +9,12 @@ namespace BradProjectOne.ControllersLayer
         //We cannot instantiate an object representation of an interface
         //We can however, create an object of a class that implements the interface
         //and store it in a variable of the interface type
-        private static IUserStorageRepo _userData = new JsonUserRepository();  //only need to change this now if we change the repository to SQL,
+        private static IUserStorageRepo _userData = new SqlUserStorage();  //only need to change this now if we change the repository to SQL,
 
         public static UserProfile CreateUser(string userName)
         {
             UserProfile newUser = new UserProfile(userName); // Creates a new user profile from the model
-            _userData.createUser(newUser); // Calls the create user method from the repository
+            _userData.CreateUser(newUser); // Calls the create user method from the repository
             return newUser;
         }
 

@@ -6,10 +6,8 @@ using System.Text.Json;
 public class JsonUserRepository : IUserStorageRepo
 {
     public static string filePath = "./DataAccessLayer/UsersFile.json";
-    public void createUser(UserProfile user)
+    public void CreateUser(UserProfile user)
     {
-
-        //string filePath = "./DataAccessLayer/UsersFile.json"; DELETE THIS LINE
 
         if (!File.Exists(filePath))
         {
