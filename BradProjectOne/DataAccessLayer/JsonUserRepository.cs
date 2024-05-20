@@ -6,10 +6,8 @@ using System.Text.Json;
 public class JsonUserRepository : IUserStorageRepo
 {
     public static string filePath = "./DataAccessLayer/UsersFile.json";
-    public void createUser(UserProfile user)
+    public void CreateUser(UserProfile user)
     {
-
-        //string filePath = "./DataAccessLayer/UsersFile.json"; DELETE THIS LINE
 
         if (!File.Exists(filePath))
         {
@@ -45,30 +43,26 @@ public class JsonUserRepository : IUserStorageRepo
         */
         try
         {
-            //string filePath = "./DataAccessLayer/UsersFile.json"; DELETE THIS LINE
             string existingUsersJson = File.ReadAllText(filePath);
 
             List<UserProfile> existingUsersList = JsonSerializer.Deserialize<List<UserProfile>>(existingUsersJson); //deserializing json string to list
 
-            foundUser = existingUsersList.FirstOrDefault(user => user.UserName == userNameToFind); //searching list for user with Lambda; works same as foreach below
+            foundUser = existingUsersList.FirstOrDefault(user => user.UserName == userNameToFind); //searching list for user with Lambda; works same as foreach
+            return foundUser;
 
-            // foreach (User user in existingUsersList){
-            //     if(user.userName == usernameToFind)
-            //     {
-            //         return user;
-            //     }
-            // }
 
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
         }
-        return foundUser;
+        return null;
 
 
 
     }
+
+
 }
 
 

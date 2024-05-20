@@ -16,5 +16,14 @@
         "Date": "2024-05-01T00:00:00",
         "UserId": "0f571cac-b80c-4717-95b7-627d04dd80cc",
         "UserName": "hafil"
+    },
+    {
+        "ReadingId": "0be8e7c5-c65d-4056-a67b-9cea55a21552",
+        "Systolic": 150,
+        "Diastolic": 75,
+        "Pulse": 80,
+        "Date": "2024-05-03T00:00:00",
+        "UserId": "a841468e-8680-476a-9a4f-6d71ab9cacf6",
+        "UserName": "Brad"
     }
 ]
