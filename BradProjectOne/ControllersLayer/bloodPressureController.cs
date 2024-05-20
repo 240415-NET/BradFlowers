@@ -14,5 +14,10 @@ public class BloodPressureController
         _bloodPressureRecord.createBloodPressureRecord(newBpReading);
     }
 
+    public static void DeleteBloodPressureRecord(Guid userId, DateTime date)
+    {
+        _bloodPressureRecord.deleteBloodPressureRecord(userId, date);
+    }
+
 }
 

@@ -11,10 +11,11 @@ namespace BradProjectOne.ControllersLayer
         //and store it in a variable of the interface type
         private static IUserStorageRepo _userData = new JsonUserRepository();  //only need to change this now if we change the repository to SQL,
 
-        public static void CreateUser(string userName)
+        public static UserProfile CreateUser(string userName)
         {
             UserProfile newUser = new UserProfile(userName); // Creates a new user profile from the model
             _userData.createUser(newUser); // Calls the create user method from the repository
+            return newUser;
         }
 
         public static bool UserExists(string userName) //method to check if user exists
@@ -29,7 +30,7 @@ namespace BradProjectOne.ControllersLayer
         }
 
 
-        public static UserProfile GetUser(string userName)
+        public static UserProfile GetUser(string userName) //method to get user
         {
             return _userData.RetrieveUser(userName);
         }

@@ -1,4 +1,6 @@
 namespace BradProjectOne.PresentationLayer;
+
+using System.Security.Cryptography.X509Certificates;
 using BradProjectOne.ControllersLayer;
 using BradProjectOne.Models;
 
@@ -20,19 +22,24 @@ public class UserMenu
             {
                 Console.WriteLine("User name cannot be blank. Please try again.");
                 validChoice = false;
+                //continue; will take you to the while statement(similiar to an else statement)
             }
-            else if (!UserProfileController.UserExists(userName)) //passing user name to user exists method in controller
+            else
             {
-                Console.WriteLine("User name does not exist. Please try again.");
-                validChoice = false;
+                UserProfile user = UserProfileController.GetUser(userName);
+                if (user == null)
+                {
+                    Console.WriteLine("User name does not exist. Please try again.");
+                    validChoice = false;
 
-            }
-            else //if user name is not null or empty and does not exist, it will create a new user
-            {
-                Console.WriteLine($"Welcome back {userName}!");
-                validChoice = true;
+                }
+                else //if user name is not null or empty and does not exist, it will create a new user
+                {
+                    Console.WriteLine($"Welcome back {userName}!");
+                    validChoice = true;
 
-                ReturningUserMenu();
+                    ReturningUserMenu(user);
+                }
             }
 
         } while (!validChoice);
@@ -43,9 +50,9 @@ public class UserMenu
 
     }
 
-    public static void ReturningUserMenu()
+    public static void ReturningUserMenu(UserProfile user)
     {
-        int returnMenuChoice = 0;  
+        int returnMenuChoice = 0;
         bool validChoice = true; // validating choice inputs to continue or break in switch statement
 
 
@@ -66,7 +73,7 @@ public class UserMenu
                 switch (returnMenuChoice)
                 {
                     case 1:
-                        UserProfile user = new UserProfile(); // create a new instance of UserProfile
+                        //UserProfile user = new UserProfile(); // create a new instance of UserProfile
                         UserMenu.NewBpReading(user); // pass the 'user' argument to the method
                         break;
 
@@ -76,8 +83,10 @@ public class UserMenu
                         break;
 
                     case 3:
-                        Console.WriteLine("DELETE A PREVIOUS ENTRY HERE"); // Placeholder
+                        Console.WriteLine("TAKEN TO DeletePbReading method and asked to delete by date");
                         validChoice = true;
+                        DeleteBpReading(user);
+                        
                         break;
 
                     case 4:
@@ -117,7 +126,7 @@ public class UserMenu
         else
         {
             Console.WriteLine("Returning to main menu.");
-            ReturningUserMenu(); //returning to main menu if user does not exit program
+            ReturningUserMenu(user); //returning to main menu if user does not exit program
         }
 
 
@@ -223,18 +232,33 @@ public class UserMenu
             }
             else //if user name is not null or empty and does not exist, it will create a new user
             {
-                UserProfileController.CreateUser(userInput); //passing user name to create user method in controller
+                UserProfile user = UserProfileController.CreateUser(userInput); //passing user name to create user method in controller
                 Console.Clear();
                 Console.WriteLine($"Your account with User Name {userInput} has been successfully created!");
                 validChoice = true;
 
-                ReturningUserMenu();
+                ReturningUserMenu(user);
             }
 
 
 
         } while (!validChoice);
 
+    }
+
+    public static void DeleteBpReading(UserProfile user)
+    {
+        DateTime dateInput;
+
+        Console.WriteLine("Please enter the date of the reading you would like to delete using one of the following formats - MM DD YYYY or MM-DD-YYYY:");
+        dateInput = Convert.ToDateTime(Console.ReadLine());
+
+        BloodPressureController.DeleteBloodPressureRecord(user.UserId, dateInput);
+
 
     }
+
 }
+
+
+
