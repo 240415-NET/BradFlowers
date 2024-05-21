@@ -71,6 +71,7 @@ public class UserMenu
 
                     case 2:
                         Console.WriteLine("DISPLAY ALL PREVIOUS READINGS HERE"); // Placeholder
+                        UserMenu.ViewAllUserBpRecords(user, ReadingId, Systolic, Diastolic, Pulse, Date);
                         validChoice = true;
                         break;
 
@@ -259,6 +260,10 @@ public class UserMenu
             ReturningUserMenu(user); //returning to main menu if user does not exit program
         }
 
+    }
+    public static void ViewAllUserBpRecords(UserProfile user, BloodPressureRecord ReadingId, BloodPressureRecord Systolic, BloodPressureRecord Diastolic, BloodPressureRecord Pulse, BloodPressureRecord Date)
+    {
+        BloodPressureController.ViewAllUserBpRecords(user, ReadingId, Systolic, Diastolic, Pulse, Date);
     }
 
 }
