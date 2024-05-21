@@ -1,6 +1,5 @@
 namespace BradProjectOne.PresentationLayer;
 
-using System.Security.Cryptography.X509Certificates;
 using BradProjectOne.ControllersLayer;
 using BradProjectOne.Models;
 
@@ -44,19 +43,12 @@ public class UserMenu
 
         } while (!validChoice);
 
-        //NEED TO CALL GetUser METHOD ON CONTROLLERS TO VALIDATE
-
-
-
     }
 
     public static void ReturningUserMenu(UserProfile user)
     {
         int returnMenuChoice = 0;
         bool validChoice = true; // validating choice inputs to continue or break in switch statement
-
-
-
 
         Console.WriteLine("\nPlease select an option:");
         Console.WriteLine("\n1 Enter new blood pressure reading");
@@ -86,7 +78,6 @@ public class UserMenu
                         Console.WriteLine("TAKEN TO DeletePbReading method and asked to delete by date");
                         validChoice = true;
                         DeleteBpReading(user);
-                        
                         break;
 
                     case 4:
@@ -112,8 +103,6 @@ public class UserMenu
 
         } while (!validChoice);
 
-
-        //*****THIS SHOULD ALL PROBABLY BE MOVED INTO THE NewBpReading METHOD INSTEAD OF HERE*****BUT WORKS FOR NOW
         Console.WriteLine("\nThank you!  If you would like to return to the main menu, please press Enter.  Otherwise type 'exit' to quit.");
         string returnToMenu = Console.ReadLine().ToLower();
 
@@ -128,7 +117,6 @@ public class UserMenu
             Console.WriteLine("Returning to main menu.");
             ReturningUserMenu(user); //returning to main menu if user does not exit program
         }
-
 
     }
 
@@ -254,7 +242,6 @@ public class UserMenu
         dateInput = Convert.ToDateTime(Console.ReadLine());
 
         BloodPressureController.DeleteBloodPressureRecord(user.UserId, dateInput);
-
 
     }
 

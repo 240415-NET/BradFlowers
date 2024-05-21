@@ -2,7 +2,7 @@ namespace BradProjectOne.Models;
 
 public interface IBpRecordStorageRepo
 {
-    public void createBloodPressureRecord(BloodPressureRecord newBpReading);
+    public void CreateBloodPressureRecord(BloodPressureRecord newBpReading);
 
-    public void deleteBloodPressureRecord(Guid userId, DateTime date);
+    public void DeleteBloodPressureRecord(Guid userId, DateTime date);
 }

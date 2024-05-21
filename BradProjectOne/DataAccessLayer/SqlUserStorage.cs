@@ -13,8 +13,8 @@ public class SqlUserStorage : IUserStorageRepo
     {
         SqlConnection connection = new SqlConnection(connectionString);  //creates a new connection to the database
         connection.Open();
-        string cmdText = @"INSERT INTO dbo.UserProfile (userId, userName)
-                            VALUES (@userId, @userName);";
+        string cmdText = @"INSERT INTO dbo.UserProfile (UserId, UserName) 
+                            VALUES (@UserId, @UserName);";
 
         using (SqlCommand cmd = new SqlCommand(cmdText, connection)) //creates a new command(can call it anything- I used cmd here)
         {
@@ -71,7 +71,7 @@ public class SqlUserStorage : IUserStorageRepo
         {
             connection.Close();
         }
-        return null;
+        return null; //if the user is not found, return null
 
     }
 

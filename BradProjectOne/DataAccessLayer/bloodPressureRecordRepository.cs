@@ -6,7 +6,7 @@ using System.Text.Json;
 public class BloodPressureRecordRepository : IBpRecordStorageRepo
 {
     public static string filePath = "./DataAccessLayer/BPFile.json";
-    public void createBloodPressureRecord(BloodPressureRecord bpRecord)
+    public void CreateBloodPressureRecord(BloodPressureRecord bpRecord)
     {
         if (File.Exists(filePath))
         {
@@ -26,7 +26,7 @@ public class BloodPressureRecordRepository : IBpRecordStorageRepo
         }
     }
 
-    public void deleteBloodPressureRecord(Guid userId, DateTime date)
+    public void DeleteBloodPressureRecord(Guid userId, DateTime date)
     {
         string existingBpRecordsJson = File.ReadAllText(filePath); //reading json string from file
         List<BloodPressureRecord> existingBpRecordsList = JsonSerializer.Deserialize<List<BloodPressureRecord>>(existingBpRecordsJson); //deserializing json string to list

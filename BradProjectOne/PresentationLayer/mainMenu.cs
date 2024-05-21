@@ -1,7 +1,5 @@
 namespace BradProjectOne.PresentationLayer;
 
-
-
 public class MainMenu
 {
     public void StartMenu()
@@ -69,7 +67,6 @@ public class MainMenu
         } while (!validChoice);
 
     }
-
 
 }
 

@@ -25,5 +25,23 @@
         "Date": "2024-05-03T00:00:00",
         "UserId": "a841468e-8680-476a-9a4f-6d71ab9cacf6",
         "UserName": "Brad"
+    },
+    {
+        "ReadingId": "93608a8c-a32c-4c88-9312-a2ea2fd60594",
+        "Systolic": 123,
+        "Diastolic": 81,
+        "Pulse": 81,
+        "Date": "2024-05-21T00:00:00",
+        "UserId": "6e351bcb-bbde-4db0-8a58-ade56fdc1025",
+        "UserName": "Tuesday"
+    },
+    {
+        "ReadingId": "102e55b1-0a1c-4aae-acaa-3f823e1a01df",
+        "Systolic": 110,
+        "Diastolic": 75,
+        "Pulse": 70,
+        "Date": "2024-05-20T00:00:00",
+        "UserId": "b87c585e-e7c8-4885-96d5-bdfea3740a6f",
+        "UserName": "Hafil"
     }
 ]
