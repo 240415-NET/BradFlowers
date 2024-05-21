@@ -47,7 +47,7 @@ public class MainMenu
                         validChoice = true;
                         break;
                     case 3:
-                        Console.WriteLine("\nThanks for visiting. Exiting the program.");
+                        Console.WriteLine("\nThanks for visiting. Exiting the Blood Pressure Tracker.");
                         validChoice = true;
                         Environment.Exit(0); //exits the program
                         return;
@@ -60,8 +60,7 @@ public class MainMenu
             catch (Exception ex)
             {
                 validChoice = false;
-                Console.WriteLine(ex);  // might not need to display the message to end user, but it's helpful for debugging, will remove later.
-                Console.WriteLine("\n Please enter a valid choice."); // \n just creates a line, so in this case between exceptions and this line.
+                Console.WriteLine("Please enter a valid choice."); // \n just creates a line, so in this case between exceptions and this line.
             }
 
         } while (!validChoice);

@@ -32,9 +32,10 @@ public class UserMenu
                     validChoice = false;
 
                 }
-                else //if user name is not null or empty and does not exist, it will create a new user
+                else //if user name is not null or empty and does not exist, it will log in existing user
                 {
-                    Console.WriteLine($"Welcome back {userName}!");
+                    Console.Clear();
+                    Console.WriteLine($"Welcome back!");
                     validChoice = true;
 
                     ReturningUserMenu(user);
@@ -50,7 +51,7 @@ public class UserMenu
         int returnMenuChoice = 0;
         bool validChoice = true; // validating choice inputs to continue or break in switch statement
 
-        Console.WriteLine("\nPlease select an option:");
+        Console.WriteLine($"\nPlease select an option, {user.UserName}:");
         Console.WriteLine("\n1 Enter new blood pressure reading");
         Console.WriteLine("2 View all previous readings");
         Console.WriteLine("3 Delete a previous entry");
@@ -65,7 +66,6 @@ public class UserMenu
                 switch (returnMenuChoice)
                 {
                     case 1:
-                        //UserProfile user = new UserProfile(); // create a new instance of UserProfile
                         UserMenu.NewBpReading(user); // pass the 'user' argument to the method
                         break;
 
@@ -75,13 +75,13 @@ public class UserMenu
                         break;
 
                     case 3:
-                        Console.WriteLine("TAKEN TO DeletePbReading method and asked to delete by date");
                         validChoice = true;
                         DeleteBpReading(user);
                         break;
 
                     case 4:
-                        Console.WriteLine("\nThanks for visiting. Exiting the program.");
+                        Console.Clear();
+                        Console.WriteLine($"\nThanks for visiting, {user.UserName}. Exiting the program.");
                         validChoice = true;
                         Environment.Exit(0); //exits the program
                         return;
@@ -96,27 +96,11 @@ public class UserMenu
             catch (Exception message)
             {
                 validChoice = false;
-                Console.WriteLine(message);  // might not need to display the message to end user, but it's helpful for debugging, will remove later.
                 Console.WriteLine("\n Please enter a valid number.");
             }
 
 
         } while (!validChoice);
-
-        Console.WriteLine("\nThank you!  If you would like to return to the main menu, please press Enter.  Otherwise type 'exit' to quit.");
-        string returnToMenu = Console.ReadLine().ToLower();
-
-        if (returnToMenu == "exit" || returnToMenu == "no" || returnToMenu == "quit")
-        {
-            Console.WriteLine("\nThanks for visiting. Exiting the program.");
-            Environment.Exit(0); //exits the program
-            return;
-        }
-        else
-        {
-            Console.WriteLine("Returning to main menu.");
-            ReturningUserMenu(user); //returning to main menu if user does not exit program
-        }
 
     }
 
@@ -135,6 +119,8 @@ public class UserMenu
 
         do //nested do while loops to validate user inputs until validChoice is true at each collection point
         {
+            Console.Clear();
+            Console.WriteLine($"Thank you, {user.UserName}! Let's collect your reading.");
             Console.WriteLine("\nEnter your systolic pressure:");
             systolicInput = Console.ReadLine();
             if (!int.TryParse(systolicInput, out systolic) || systolic < 0 || systolic > 300)
@@ -171,7 +157,6 @@ public class UserMenu
             }
             else
             {
-
                 break;
             }
         } while (true);
@@ -195,6 +180,21 @@ public class UserMenu
         validChoice = true;
 
         BloodPressureController.CreateBloodPressureRecord(user, readingId, systolic, diastolic, pulse, date); //passing user inputs to create blood pressure record method in controller
+
+        Console.WriteLine($"\nThank you for the entry, {user.UserName}. It has been stored to your account!  If you would like to return to the main menu, please press Enter.  Otherwise type 'exit' to quit.");
+        string returnToMenu = Console.ReadLine().ToLower();
+
+        if (returnToMenu == "exit" || returnToMenu == "no" || returnToMenu == "quit")
+        {
+            Console.WriteLine($"\nThanks for visiting, {user.UserName}. Exiting your Account.");
+            Environment.Exit(0); //exits the program
+            return;
+        }
+        else
+        {
+            Console.WriteLine("Returning to main menu.");
+            ReturningUserMenu(user); //returning to main menu if user does not exit program
+        }
     }
 
     public static void UserCreationMenu() //method to create a new user
@@ -222,7 +222,7 @@ public class UserMenu
             {
                 UserProfile user = UserProfileController.CreateUser(userInput); //passing user name to create user method in controller
                 Console.Clear();
-                Console.WriteLine($"Your account with User Name {userInput} has been successfully created!");
+                Console.WriteLine($"Your account with user name, {userInput}, has been successfully created!");
                 validChoice = true;
 
                 ReturningUserMenu(user);
@@ -238,10 +238,26 @@ public class UserMenu
     {
         DateTime dateInput;
 
+        Console.Clear();
         Console.WriteLine("Please enter the date of the reading you would like to delete using one of the following formats - MM DD YYYY or MM-DD-YYYY:");
         dateInput = Convert.ToDateTime(Console.ReadLine());
 
         BloodPressureController.DeleteBloodPressureRecord(user.UserId, dateInput);
+
+        Console.WriteLine("\nYour record has been deleted from your account.  If you would like to return to the main menu, please press Enter.  Otherwise type 'exit' to quit.");
+        string returnToMenu = Console.ReadLine().ToLower();
+
+        if (returnToMenu == "exit" || returnToMenu == "no" || returnToMenu == "quit")
+        {
+            Console.WriteLine($"\nThanks for visiting, {user.UserName}. Exiting your Account.");
+            Environment.Exit(0); //exits the program
+            return;
+        }
+        else
+        {
+            Console.WriteLine("Returning to main menu.");
+            ReturningUserMenu(user); //returning to main menu if user does not exit program
+        }
 
     }
 
