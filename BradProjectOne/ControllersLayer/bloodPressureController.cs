@@ -19,14 +19,11 @@ public class BloodPressureController
         _bloodPressureRecord.DeleteBloodPressureRecord(userId, date);
     }
 
-    public static void ViewAllUserBpRecords(UserProfile user, Guid readingId, int systolic, int diastolic, int pulse, DateTime date)
+    public static void ViewAllUserBpRecords(Guid userId)
     {
-        {
-            BloodPressureRecord listOfAllforUser = new BloodPressureRecord(user.UserId, user.UserName, readingId, systolic, diastolic, pulse, date);
-
-            _bloodPressureRecord.ViewAllUserBpRecords(listOfAllforUser);
-        }
-
+        _bloodPressureRecord.ViewAllUserBpRecords(userId);
     }
+    
+   
 }
 

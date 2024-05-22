@@ -70,8 +70,7 @@ public class UserMenu
                         break;
 
                     case 2:
-                        Console.WriteLine("DISPLAY ALL PREVIOUS READINGS HERE"); // Placeholder
-                        UserMenu.ViewAllUserBpRecords(user, ReadingId, Systolic, Diastolic, Pulse, Date);
+                        UserMenu.ViewAllUserBpRecords(user.UserId);
                         validChoice = true;
                         break;
 
@@ -261,12 +260,13 @@ public class UserMenu
         }
 
     }
-    public static void ViewAllUserBpRecords(UserProfile user, BloodPressureRecord ReadingId, BloodPressureRecord Systolic, BloodPressureRecord Diastolic, BloodPressureRecord Pulse, BloodPressureRecord Date)
+    public static void ViewAllUserBpRecords(Guid userId)
     {
-        BloodPressureController.ViewAllUserBpRecords(user, ReadingId, Systolic, Diastolic, Pulse, Date);
+        BloodPressureController.ViewAllUserBpRecords(userId);
     }
-
 }
+
+
 
 
 
