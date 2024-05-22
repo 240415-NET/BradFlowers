@@ -49,7 +49,6 @@ public class UserMenu
     {
         int returnMenuChoice = 0;
         bool validChoice = true; // validating choice inputs to continue or break in switch statement
-       //Console.Clear();
         Console.WriteLine($"\nPlease select an option, {user.UserName}:");
         Console.WriteLine("\n1 Enter new blood pressure reading");
         Console.WriteLine("2 View all previous readings");
@@ -115,7 +114,6 @@ public class UserMenu
 
         do //nested do while loops to validate user inputs until validChoice is true at each collection point
         {
-            //Console.Clear();
             Console.WriteLine($"Thank you, {user.UserName}! Let's collect your reading.");
             Console.WriteLine("\nEnter your systolic pressure:");
             systolicInput = Console.ReadLine();
