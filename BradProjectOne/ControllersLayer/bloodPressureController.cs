@@ -14,9 +14,9 @@ public class BloodPressureController
         _bloodPressureRecord.CreateBloodPressureRecord(newBpReading);
     }
 
-    public static void DeleteBloodPressureRecord(Guid userId, DateTime date)
+    public static bool DeleteBloodPressureRecord(Guid userId, DateTime date)
     {
-        _bloodPressureRecord.DeleteBloodPressureRecord(userId, date);
+        return _bloodPressureRecord.DeleteBloodPressureRecord(userId, date);
     }
 
     public static void ViewAllUserBpRecords(Guid userId)

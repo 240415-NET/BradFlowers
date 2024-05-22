@@ -87,7 +87,7 @@ public class UserMenu
                         return;
 
                     default:
-                        Console.WriteLine("\nPlease enter a valid number.");
+                        Console.WriteLine("\nPlease enter a valid choice.");
                         validChoice = false;
                         break;
 
@@ -186,12 +186,14 @@ public class UserMenu
 
         if (returnToMenu == "exit" || returnToMenu == "no" || returnToMenu == "quit")
         {
+            Console.Clear();
             Console.WriteLine($"\nThanks for visiting, {user.UserName}. Exiting your Account.");
             Environment.Exit(0); //exits the program
             return;
         }
         else
         {
+            Console.Clear();
             Console.WriteLine("Returning to main menu.");
             ReturningUserMenu(user); //returning to main menu if user does not exit program
         }
@@ -203,6 +205,7 @@ public class UserMenu
         string userInput = ""; // collecting user name input
         do
         {
+            Console.Clear();
             Console.WriteLine("\nWelcome! Please enter a User Name:");
             userInput = Console.ReadLine().Trim(); //collecting user name input
             Console.Clear();
@@ -233,7 +236,6 @@ public class UserMenu
         } while (!validChoice);
 
     }
-
     public static void DeleteBpReading(UserProfile user)
     {
         DateTime dateInput;
@@ -242,19 +244,28 @@ public class UserMenu
         Console.WriteLine("Please enter the date of the reading you would like to delete using one of the following formats - MM DD YYYY or MM-DD-YYYY:");
         dateInput = Convert.ToDateTime(Console.ReadLine());
 
-        BloodPressureController.DeleteBloodPressureRecord(user.UserId, dateInput);
-
-        Console.WriteLine("\nYour record has been deleted from your account.  If you would like to return to the main menu, please press Enter.  Otherwise type 'exit' to quit.");
+        bool deleteSuccess = BloodPressureController.DeleteBloodPressureRecord(user.UserId, dateInput);
+        if (deleteSuccess)
+        {
+            Console.WriteLine("\nYour record has been deleted from your account.");
+        }
+        else
+        {
+            Console.WriteLine("\nNo record was found for that date.");
+        }
+        Console.WriteLine("\nIf you would like to return to the main menu, please press Enter.  Otherwise type 'exit' to quit.");
         string returnToMenu = Console.ReadLine().ToLower();
 
         if (returnToMenu == "exit" || returnToMenu == "no" || returnToMenu == "quit")
-        {
+        {   
+            Console.Clear();
             Console.WriteLine($"\nThanks for visiting, {user.UserName}. Exiting your Account.");
             Environment.Exit(0); //exits the program
             return;
         }
         else
         {
+            Console.Clear();
             Console.WriteLine("Returning to main menu.");
             ReturningUserMenu(user); //returning to main menu if user does not exit program
         }

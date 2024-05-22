@@ -30,21 +30,23 @@ public class SqlBpRecordStorage : IBpRecordStorageRepo
         }
     }
 
-    public void DeleteBloodPressureRecord(Guid userId, DateTime date) //Note that the method names must match those on the interface
+    public bool DeleteBloodPressureRecord(Guid userId, DateTime date) //Note that the method names must match those on the interface
     {
         SqlConnection connection = new SqlConnection(connectionString);
         connection.Open();
         string cmdText = @"DELETE FROM dbo.BloodPressureRecord 
                             WHERE UserId = @UserId AND ReadingDate = @ReadingDate;";
 
+        int rowsAffected = 0;
         using (SqlCommand cmd = new SqlCommand(cmdText, connection))
         {
             cmd.Parameters.AddWithValue("@UserId", userId); //adds the user id to the command
             cmd.Parameters.AddWithValue("@ReadingDate", date);
-            cmd.ExecuteNonQuery();
+            rowsAffected = cmd.ExecuteNonQuery();
             connection.Close();
 
         }
+        return rowsAffected > 0;
     }
 
     public void ViewAllUserBpRecords(Guid userId)

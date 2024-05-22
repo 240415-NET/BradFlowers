@@ -23,7 +23,7 @@ public class MainMenu
                 switch (mainMenuChoice)
                 {
                     case 1:
-                        Console.WriteLine("New user selected");
+                        Console.Clear();
                         validChoice = true;
                         try
                         {
@@ -35,7 +35,7 @@ public class MainMenu
                         }
                         break;
                     case 2:
-                        Console.WriteLine("Returning user selected");
+                        Console.Clear();
                         try
                         {
                             UserMenu.UserLoginVerification();
