@@ -35,5 +35,17 @@ public class BloodPressureRecordRepository : IBpRecordStorageRepo
         string jsonBpRecordsString = JsonSerializer.Serialize(existingBpRecordsList); //serializing list to json string
         File.WriteAllText(filePath, jsonBpRecordsString); //writing json string to a file
     }
+
+    public void ViewAllUserBpRecords(Guid userId)
+    {
+
+        string existingBpRecordsJson = File.ReadAllText(filePath); //reading json string from file
+        List<BloodPressureRecord> existingBpRecordsList = JsonSerializer.Deserialize<List<BloodPressureRecord>>(existingBpRecordsJson); //deserializing json string to list
+        List<BloodPressureRecord> userBpRecords = existingBpRecordsList.FindAll(bpRecord => bpRecord.UserId == userId); //finding all users with the same username
+        foreach (BloodPressureRecord bpRecord in userBpRecords)
+        {
+            Console.WriteLine(bpRecord.ToString()); //printing out all users with the same username
+        }
+    }
 }
 

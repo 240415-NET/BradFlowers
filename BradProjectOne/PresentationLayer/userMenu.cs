@@ -70,7 +70,7 @@ public class UserMenu
                         break;
 
                     case 2:
-                        Console.WriteLine("DISPLAY ALL PREVIOUS READINGS HERE"); // Placeholder
+                        UserMenu.ViewAllUserBpRecords(user.UserId);
                         validChoice = true;
                         break;
 
@@ -260,8 +260,13 @@ public class UserMenu
         }
 
     }
-
+    public static void ViewAllUserBpRecords(Guid userId)
+    {
+        BloodPressureController.ViewAllUserBpRecords(userId);
+    }
 }
+
+
 
 
 

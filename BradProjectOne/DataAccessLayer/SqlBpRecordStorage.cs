@@ -46,4 +46,29 @@ public class SqlBpRecordStorage : IBpRecordStorageRepo
 
         }
     }
+
+    public void ViewAllUserBpRecords(Guid userId)
+    {
+        SqlConnection connection = new SqlConnection(connectionString);
+        connection.Open();
+        string cmdText = @"SELECT ReadingId, UserId, UserName, Systolic, Diastolic, Pulse, ReadingDate
+                            FROM dbo.BloodPressureRecord
+                            WHERE UserId = @UserId;";
+
+        using (SqlCommand cmd = new SqlCommand(cmdText, connection))
+        {
+            cmd.Parameters.AddWithValue("@UserId", userId);
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("Systolic: " + reader["Systolic"] +
+                  ", Diastolic: " + reader["Diastolic"] +
+                  ", Pulse: " + reader["Pulse"] +
+                  ", ReadingDate: " + reader["ReadingDate"]);
+                }
+            }
+        }
+        connection.Close();
+    }
 }
