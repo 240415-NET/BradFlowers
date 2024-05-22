@@ -23,8 +23,8 @@ public class MainMenu
                 switch (mainMenuChoice)
                 {
                     case 1:
-                        Console.Clear();
-                        validChoice = true;
+                        //Console.Clear();
+                        //validChoice = true;
                         try
                         {
                             UserMenu.UserCreationMenu(); //calling user creation menu method
@@ -35,7 +35,7 @@ public class MainMenu
                         }
                         break;
                     case 2:
-                        Console.Clear();
+                        //Console.Clear();
                         try
                         {
                             UserMenu.UserLoginVerification();
