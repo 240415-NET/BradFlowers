@@ -5,7 +5,6 @@ using BradProjectOne.Models;
 
 public class UserMenu
 {
-
     public static void UserLoginVerification()
     {
         bool validChoice = true; // validating choice input to continue or break in switch statement
@@ -90,7 +89,6 @@ public class UserMenu
                         Console.WriteLine("\nPlease enter a valid choice.");
                         validChoice = false;
                         break;
-
                 }
             }
             catch (Exception message)
@@ -98,10 +96,7 @@ public class UserMenu
                 validChoice = false;
                 Console.WriteLine("\n Please enter a valid number.");
             }
-
-
         } while (!validChoice);
-
     }
 
     public static void NewBpReading(UserProfile user)
@@ -133,7 +128,7 @@ public class UserMenu
             }
         } while (true);
 
-        do //nested do while loops to validate user inputs until validChoice is true at each collection point
+        do
         {
             Console.WriteLine("\nThanks! Now enter your diastolic pressure:");
             diastolicInput = Console.ReadLine();
@@ -147,7 +142,7 @@ public class UserMenu
             }
         } while (true);
 
-        do //nested do while loops to validate user inputs until validChoice is true at each collection point
+        do
         {
             Console.WriteLine("\nAnd please enter your pulse:");
             pulseInput = Console.ReadLine();
@@ -161,7 +156,7 @@ public class UserMenu
             }
         } while (true);
 
-        do //nested do while loops to validate user inputs until validChoice is true at each collection point
+        do
         {
             Console.WriteLine("\nFinally, enter the date of the reading using one of the following formats - MM DD YYYY or MM-DD-YYYY:");
             dateInput = Console.ReadLine();
@@ -173,10 +168,7 @@ public class UserMenu
             {
                 break;
             }
-
-
         } while (true);
-
         validChoice = true;
 
         BloodPressureController.CreateBloodPressureRecord(user, readingId, systolic, diastolic, pulse, date); //passing user inputs to create blood pressure record method in controller
@@ -188,9 +180,10 @@ public class UserMenu
         {
             Console.Clear();
             Console.WriteLine($"\nThanks for visiting, {user.UserName}. Exiting your Account.");
-            Environment.Exit(0); //exits the program
+            Environment.Exit(0);
             return;
         }
+
         else
         {
             Console.Clear();
@@ -201,8 +194,8 @@ public class UserMenu
 
     public static void UserCreationMenu() //method to create a new user
     {
-        bool validChoice = true; // validating choice input t3o continue or break in switch statement
-        string userInput = ""; // collecting user name input
+        bool validChoice = true;
+        string userInput = "";
         do
         {
             Console.Clear();
@@ -215,6 +208,7 @@ public class UserMenu
                 Console.WriteLine("User name cannot be blank. Please try again.");
                 validChoice = false;
             }
+
             else if (UserProfileController.UserExists(userInput)) //passing user name to user exists method in controller
             {
                 Console.WriteLine("User name already exists. Please try again.");
@@ -230,9 +224,6 @@ public class UserMenu
 
                 ReturningUserMenu(user);
             }
-
-
-
         } while (!validChoice);
 
     }
@@ -257,7 +248,7 @@ public class UserMenu
         string returnToMenu = Console.ReadLine().ToLower();
 
         if (returnToMenu == "exit" || returnToMenu == "no" || returnToMenu == "quit")
-        {   
+        {
             Console.Clear();
             Console.WriteLine($"\nThanks for visiting, {user.UserName}. Exiting your Account.");
             Environment.Exit(0); //exits the program
@@ -269,15 +260,9 @@ public class UserMenu
             Console.WriteLine("Returning to main menu.");
             ReturningUserMenu(user); //returning to main menu if user does not exit program
         }
-
     }
     public static void ViewAllUserBpRecords(Guid userId)
     {
         BloodPressureController.ViewAllUserBpRecords(userId);
     }
 }
-
-
-
-
-

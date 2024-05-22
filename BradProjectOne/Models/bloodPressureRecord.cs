@@ -23,8 +23,3 @@ namespace BradProjectOne.Models
         }
     }
 }
-
-
-
-
-

@@ -62,13 +62,6 @@ public class MainMenu
                 validChoice = false;
                 Console.WriteLine("Please enter a valid choice."); // \n just creates a line, so in this case between exceptions and this line.
             }
-
         } while (!validChoice);
-
     }
-
 }
-
-
-
-

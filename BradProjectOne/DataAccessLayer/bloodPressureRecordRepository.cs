@@ -1,7 +1,7 @@
 namespace BradProjectOne.DataAccessLayer;
+
 using BradProjectOne.Models;
 using System.Text.Json;
-
 
 public class BloodPressureRecordRepository : IBpRecordStorageRepo
 {
@@ -25,6 +25,7 @@ public class BloodPressureRecordRepository : IBpRecordStorageRepo
             File.WriteAllText(filePath, jsonBpRecordsString); //writing json string to a filed
         }
     }
+
     public bool DeleteBloodPressureRecord(Guid userId, DateTime date)
     {
         string existingBpRecordsJson = File.ReadAllText(filePath); //reading json string from file
@@ -48,4 +49,3 @@ public class BloodPressureRecordRepository : IBpRecordStorageRepo
         }
     }
 }
-

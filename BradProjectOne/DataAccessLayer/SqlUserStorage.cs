@@ -1,8 +1,7 @@
+namespace BradProjectOne.DataAccessLayer;
+
 using BradProjectOne.Models;
 using System.Data.SqlClient;
-
-
-namespace BradProjectOne.DataAccessLayer;
 
 public class SqlUserStorage : IUserStorageRepo
 {
@@ -15,7 +14,6 @@ public class SqlUserStorage : IUserStorageRepo
         connection.Open();
         string cmdText = @"INSERT INTO dbo.UserProfile (UserId, UserName) 
                             VALUES (@UserId, @UserName);";
-
         using (SqlCommand cmd = new SqlCommand(cmdText, connection)) //creates a new command(can call it anything- I used cmd here)
         {
             cmd.Parameters.AddWithValue("@UserId", user.UserId); //adds the user id to the command
@@ -23,7 +21,6 @@ public class SqlUserStorage : IUserStorageRepo
             cmd.ExecuteNonQuery(); //executes the command to INSERT new row to the dbo.UserProfile table
             connection.Close(); //closes the connection
         }
-
 
     }
 
@@ -42,7 +39,6 @@ public class SqlUserStorage : IUserStorageRepo
             string cmdText = @"SELECT UserId, UserName
                                 FROM dbo.UserProfile 
                                 WHERE UserName=@userToFind ";
-
             using SqlCommand cmd = new SqlCommand(cmdText, connection); //creates a new command(can call it anything- I used cmd here)
             cmd.Parameters.AddWithValue("@userToFind", userNameToFind); //adds the user name to the command
             using SqlDataReader reader = cmd.ExecuteReader(); //creates a new reader to read the results of the command
@@ -57,11 +53,8 @@ public class SqlUserStorage : IUserStorageRepo
             {
                 return null;
             }
-
             //Otherwise we return the found filled out user object
             return foundUser;
-
-
         }
         catch (Exception e)
         {
@@ -72,9 +65,5 @@ public class SqlUserStorage : IUserStorageRepo
             connection.Close();
         }
         return null; //if the user is not found, return null
-
     }
-
-    
-
 }

@@ -1,8 +1,7 @@
+namespace BradProjectOne.ControllersLayer;
+
 using BradProjectOne.Models;
 using BradProjectOne.DataAccessLayer;
-
-
-namespace BradProjectOne.ControllersLayer;
 
 public class BloodPressureController
 {
@@ -23,7 +22,4 @@ public class BloodPressureController
     {
         _bloodPressureRecord.ViewAllUserBpRecords(userId);
     }
-    
-   
 }
-
