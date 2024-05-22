@@ -49,7 +49,6 @@ public class UserMenu
     {
         int returnMenuChoice = 0;
         bool validChoice = true; // validating choice inputs to continue or break in switch statement
-
         Console.WriteLine($"\nPlease select an option, {user.UserName}:");
         Console.WriteLine("\n1 Enter new blood pressure reading");
         Console.WriteLine("2 View all previous readings");
@@ -70,7 +69,7 @@ public class UserMenu
                         break;
 
                     case 2:
-                        UserMenu.ViewAllUserBpRecords(user.UserId);
+                        UserMenu.ViewAllUserBpRecords(user.UserId, user);
                         validChoice = true;
                         break;
 
@@ -115,7 +114,6 @@ public class UserMenu
 
         do //nested do while loops to validate user inputs until validChoice is true at each collection point
         {
-            Console.Clear();
             Console.WriteLine($"Thank you, {user.UserName}! Let's collect your reading.");
             Console.WriteLine("\nEnter your systolic pressure:");
             systolicInput = Console.ReadLine();
@@ -199,10 +197,9 @@ public class UserMenu
         string userInput = "";
         do
         {
-            Console.Clear();
             Console.WriteLine("\nWelcome! Please enter a User Name:");
             userInput = Console.ReadLine().Trim(); //collecting user name input
-            Console.Clear();
+
 
             if (String.IsNullOrEmpty(userInput)) //if user name is null or empty, it will return false
             {
@@ -214,7 +211,6 @@ public class UserMenu
             {
                 Console.WriteLine("User name already exists. Please try again.");
                 validChoice = false;
-
             }
             else //if user name is not null or empty and does not exist, it will create a new user
             {
@@ -262,16 +258,32 @@ public class UserMenu
             ReturningUserMenu(user); //returning to main menu if user does not exit program
         }
     }
-    public static void ViewAllUserBpRecords(Guid userId)
+    public static void ViewAllUserBpRecords(Guid userId, UserProfile user)
     {
         List<BloodPressureRecord> userBpRecords = BloodPressureController.ViewAllUserBpRecords(userId);
         Console.Clear();
         Console.WriteLine("Here are all of your previous readings:\n");
-        
+
         foreach (BloodPressureRecord bpRecord in userBpRecords)
         {
             Console.WriteLine($"Systolic: {bpRecord.Systolic}, Diastolic: {bpRecord.Diastolic}, Pulse: {bpRecord.Pulse}, Date: {bpRecord.Date}\n");
+        }
 
+        Console.WriteLine("\nIf you would like to return to the main menu, please press Enter.  Otherwise type 'exit' to quit.");
+        string returnToMenu = Console.ReadLine().ToLower();
+
+        if (returnToMenu == "exit" || returnToMenu == "no" || returnToMenu == "quit")
+        {
+            Console.Clear();
+            Console.WriteLine($"\nThanks for visiting, {user.UserName}. Exiting your Account.");
+            Environment.Exit(0); //exits the program
+            return;
+        }
+        else
+        {
+            Console.Clear();
+            Console.WriteLine("Returning to main menu.");
+            ReturningUserMenu(user); //returning to main menu if user does not exit program
         }
     }
 }
