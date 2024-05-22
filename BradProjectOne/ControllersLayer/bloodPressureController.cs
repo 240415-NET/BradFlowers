@@ -18,8 +18,9 @@ public class BloodPressureController
         return _bloodPressureRecord.DeleteBloodPressureRecord(userId, date);
     }
 
-    public static void ViewAllUserBpRecords(Guid userId)
+    public static List<BloodPressureRecord> ViewAllUserBpRecords(Guid userId)
+
     {
-        _bloodPressureRecord.ViewAllUserBpRecords(userId);
+        return _bloodPressureRecord.ViewAllUserBpRecords(userId);
     }
 }

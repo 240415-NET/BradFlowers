@@ -45,13 +45,16 @@ public class SqlBpRecordStorage : IBpRecordStorageRepo
         return rowsToDelete > 0;
     }
 
-    public void ViewAllUserBpRecords(Guid userId)
+    public List<BloodPressureRecord> ViewAllUserBpRecords(Guid userId)
     {
         SqlConnection connection = new SqlConnection(connectionString);
         connection.Open();
-        string cmdText = @"SELECT ReadingId, UserId, UserName, Systolic, Diastolic, Pulse, ReadingDate
+        string cmdText = @"SELECT UserId, ReadingId, UserName, Systolic, Diastolic, Pulse, ReadingDate
                             FROM dbo.BloodPressureRecord
                             WHERE UserId = @UserId;";
+
+        List<BloodPressureRecord> userBpRecords = new List<BloodPressureRecord>();
+
         using (SqlCommand cmd = new SqlCommand(cmdText, connection))
         {
             cmd.Parameters.AddWithValue("@UserId", userId);
@@ -59,13 +62,21 @@ public class SqlBpRecordStorage : IBpRecordStorageRepo
             {
                 while (reader.Read())
                 {
-                    Console.WriteLine("Systolic: " + reader["Systolic"] +
-                  ", Diastolic: " + reader["Diastolic"] +
-                  ", Pulse: " + reader["Pulse"] +
-                  ", ReadingDate: " + reader["ReadingDate"]);
+                    BloodPressureRecord bpRecord = new BloodPressureRecord();
+                    bpRecord.UserId = (Guid)reader["UserId"]; 
+                    bpRecord.UserName =(string)reader["UserName"];
+                    bpRecord.ReadingId = (Guid)reader["ReadingId"];
+                    bpRecord.Systolic =(int)reader["Systolic"];
+                    bpRecord.Diastolic = (int)reader["Diastolic"];
+                    bpRecord.Pulse = (int)reader["Pulse"];
+                    bpRecord.Date = (DateTime)reader["ReadingDate"];
+
+                    userBpRecords.Add(bpRecord);
                 }
             }
         }
         connection.Close();
+
+        return userBpRecords;
     }
 }

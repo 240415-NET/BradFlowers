@@ -37,15 +37,11 @@ public class BloodPressureRecordRepository : IBpRecordStorageRepo
         return true;
     }
 
-    public void ViewAllUserBpRecords(Guid userId)
+    public List<BloodPressureRecord> ViewAllUserBpRecords(Guid userId)
     {
-
         string existingBpRecordsJson = File.ReadAllText(filePath); //reading json string from file
         List<BloodPressureRecord> existingBpRecordsList = JsonSerializer.Deserialize<List<BloodPressureRecord>>(existingBpRecordsJson); //deserializing json string to list
         List<BloodPressureRecord> userBpRecords = existingBpRecordsList.FindAll(bpRecord => bpRecord.UserId == userId); //finding all users with the same username
-        foreach (BloodPressureRecord bpRecord in userBpRecords)
-        {
-            Console.WriteLine(bpRecord.ToString()); //printing out all users with the same username
-        }
+        return userBpRecords;
     }
 }

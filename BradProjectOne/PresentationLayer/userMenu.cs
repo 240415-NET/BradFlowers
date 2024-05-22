@@ -66,6 +66,7 @@ public class UserMenu
                 {
                     case 1:
                         UserMenu.NewBpReading(user); // pass the 'user' argument to the method
+                        validChoice = true;
                         break;
 
                     case 2:
@@ -263,6 +264,14 @@ public class UserMenu
     }
     public static void ViewAllUserBpRecords(Guid userId)
     {
-        BloodPressureController.ViewAllUserBpRecords(userId);
+        List<BloodPressureRecord> userBpRecords = BloodPressureController.ViewAllUserBpRecords(userId);
+        Console.Clear();
+        Console.WriteLine("Here are all of your previous readings:\n");
+        
+        foreach (BloodPressureRecord bpRecord in userBpRecords)
+        {
+            Console.WriteLine($"Systolic: {bpRecord.Systolic}, Diastolic: {bpRecord.Diastolic}, Pulse: {bpRecord.Pulse}, Date: {bpRecord.Date}\n");
+
+        }
     }
 }

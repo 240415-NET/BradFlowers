@@ -6,5 +6,5 @@ public interface IBpRecordStorageRepo
 
     public bool DeleteBloodPressureRecord(Guid userId, DateTime date);
 
-    public void ViewAllUserBpRecords(Guid userId);
+    public List<BloodPressureRecord> ViewAllUserBpRecords(Guid userId);
 }
