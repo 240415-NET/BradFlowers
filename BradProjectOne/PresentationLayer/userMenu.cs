@@ -12,14 +12,14 @@ public class UserMenu
 
         do
         {
-            Console.WriteLine("\nWelcome back! Please enter your User Name:");
+            Console.WriteLine("\nWelcome back! Please enter your User Name or hit Enter to return to the Main Menu:");
             userName = Console.ReadLine().Trim(); //collecting user name input
 
             if (String.IsNullOrEmpty(userName)) //if user name is null or empty, it will return false
             {
-                Console.WriteLine("User name cannot be blank. Please try again.");
-                validChoice = false;
-                //continue; will take you to the while statement(similiar to an else statement)
+                MainMenu mainMenu = new MainMenu(); //creating an instance of the main menu because we are returning to the main menu which isn't static
+                mainMenu.StartMenu();
+                validChoice = true;
             }
             else
             {
@@ -210,14 +210,15 @@ public class UserMenu
         string userInput = "";
         do
         {
-            Console.WriteLine("\nWelcome! Please enter a User Name:");
+            Console.WriteLine("\nWelcome! Please enter a User Name or hit Enter to return to Main Menu:");
             userInput = Console.ReadLine().Trim(); //collecting user name input
 
 
             if (String.IsNullOrEmpty(userInput)) //if user name is null or empty, it will return false
             {
-                Console.WriteLine("User name cannot be blank. Please try again.");
-                validChoice = false;
+                MainMenu mainMenu = new MainMenu(); //creating an instance of the main menu because we are returning to the main menu which isn't static
+                mainMenu.StartMenu();
+                validChoice = true;
             }
 
             else if (UserProfileController.UserExists(userInput)) //passing user name to user exists method in controller
