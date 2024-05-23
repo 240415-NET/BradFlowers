@@ -33,7 +33,7 @@ public class UserMenu
                 else //if user name is not null or empty and does not exist, it will log in existing user
                 {
                     Console.Clear();
-                    Console.WriteLine($"Welcome back!");
+                    Console.WriteLine($"Thanks for stopping by!");
                     validChoice = true;
                     ReturningUserMenu(user);
                 }
@@ -45,7 +45,7 @@ public class UserMenu
     {
         int returnMenuChoice = 0;
         bool validChoice = true; // validating choice inputs to continue or break in switch statement
-        
+
         Console.WriteLine($"\nPlease select an option, {user.UserName}:");
         Console.WriteLine("\n1 Enter new blood pressure reading");
         Console.WriteLine("2 View all previous readings");
@@ -108,11 +108,25 @@ public class UserMenu
         string dateInput;
         bool validChoice = true;
         Guid readingId = Guid.NewGuid();
+        string initialInput;
 
+        Console.Clear();
+        Console.WriteLine($"Are you ready to enter a new record, {user.UserName}? If so hit enter or type 'back' to go back to user menu.");
+        initialInput = Console.ReadLine();
+        
+        if (initialInput.ToLower() == "back" || initialInput.ToLower() == "return" || initialInput.ToLower() == "exit" || initialInput.ToLower() == "no")
+        {
+            ReturningUserMenu(user); //returning to main menu if user types 'return'
+            Console.Clear();
+            return;
+        }
+        else
+        {
+            Console.Clear();
+        }
         do //nested do while loops to validate user inputs until validChoice is true at each collection point
         {
-            Console.WriteLine($"Thank you, {user.UserName}! Let's collect your reading.");
-            Console.WriteLine("\nEnter your systolic pressure:");
+            Console.WriteLine($"\nEnter your systolic pressure, {user.UserName}:");
             systolicInput = Console.ReadLine();
             if (!int.TryParse(systolicInput, out systolic) || systolic < 0 || systolic > 300) //TryParse will return false if the input is not an integer
             {
@@ -219,8 +233,8 @@ public class UserMenu
                 ReturningUserMenu(user);
             }
         } while (!validChoice);
-
     }
+
     public static void DeleteBpReading(UserProfile user)
     {
         DateTime dateInput;
@@ -255,11 +269,11 @@ public class UserMenu
             ReturningUserMenu(user); //returning to main menu if user does not exit program
         }
     }
-    
+
     public static void ViewAllUserBpRecords(Guid userId, UserProfile user)
     {
-        List<BloodPressureRecord> userBpRecords = BloodPressureController.ViewAllUserBpRecords(userId);
         Console.Clear();
+        List<BloodPressureRecord> userBpRecords = BloodPressureController.ViewAllUserBpRecords(userId);
         Console.WriteLine("Here are all of your previous readings:\n");
 
         foreach (BloodPressureRecord bpRecord in userBpRecords)
