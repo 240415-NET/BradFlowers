@@ -11,7 +11,6 @@ public class JsonUserRepository : IUserStorageRepo
         if (!File.Exists(filePath))
         {
             List<UserProfile> initialUsersList = new List<UserProfile>();
-
             initialUsersList.Add(user); //adding user to list prior to serializing
             string jsonUsersString = JsonSerializer.Serialize(initialUsersList); //serializing list to json string
             File.WriteAllText(filePath, jsonUsersString); //writing json string to a filed
@@ -21,7 +20,6 @@ public class JsonUserRepository : IUserStorageRepo
         {
             string existingUsersJson = File.ReadAllText(filePath); //reading json string from file
             List<UserProfile> existingUsersList = JsonSerializer.Deserialize<List<UserProfile>>(existingUsersJson); //deserializing json string to list
-
             existingUsersList.Add(user); //adding user to list
             string jsonUsersString = JsonSerializer.Serialize(existingUsersList); //serializing list to json string
             File.WriteAllText(filePath, jsonUsersString); //writing json string to a file

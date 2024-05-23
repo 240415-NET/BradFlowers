@@ -21,7 +21,6 @@ public class SqlUserStorage : IUserStorageRepo
             cmd.ExecuteNonQuery(); //executes the command to INSERT new row to the dbo.UserProfile table
             connection.Close(); //closes the connection
         }
-
     }
 
     public UserProfile RetrieveUser(string userNameToFind)

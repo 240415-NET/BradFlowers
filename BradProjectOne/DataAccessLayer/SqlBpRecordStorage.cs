@@ -51,7 +51,8 @@ public class SqlBpRecordStorage : IBpRecordStorageRepo
         connection.Open();
         string cmdText = @"SELECT UserId, ReadingId, UserName, Systolic, Diastolic, Pulse, ReadingDate
                             FROM dbo.BloodPressureRecord
-                            WHERE UserId = @UserId;";
+                            WHERE UserId = @UserId
+                            ORDER BY ReadingDate asc;";
 
         List<BloodPressureRecord> userBpRecords = new List<BloodPressureRecord>();
 
@@ -63,10 +64,10 @@ public class SqlBpRecordStorage : IBpRecordStorageRepo
                 while (reader.Read())
                 {
                     BloodPressureRecord bpRecord = new BloodPressureRecord();
-                    bpRecord.UserId = (Guid)reader["UserId"]; 
-                    bpRecord.UserName =(string)reader["UserName"];
+                    bpRecord.UserId = (Guid)reader["UserId"];
+                    bpRecord.UserName = (string)reader["UserName"];
                     bpRecord.ReadingId = (Guid)reader["ReadingId"];
-                    bpRecord.Systolic =(int)reader["Systolic"];
+                    bpRecord.Systolic = (int)reader["Systolic"];
                     bpRecord.Diastolic = (int)reader["Diastolic"];
                     bpRecord.Pulse = (int)reader["Pulse"];
                     bpRecord.Date = (DateTime)reader["ReadingDate"];

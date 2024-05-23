@@ -15,7 +15,6 @@ public class UserMenu
             Console.WriteLine("\nWelcome back! Please enter your User Name:");
             userName = Console.ReadLine().Trim(); //collecting user name input
 
-
             if (String.IsNullOrEmpty(userName)) //if user name is null or empty, it will return false
             {
                 Console.WriteLine("User name cannot be blank. Please try again.");
@@ -36,26 +35,24 @@ public class UserMenu
                     Console.Clear();
                     Console.WriteLine($"Welcome back!");
                     validChoice = true;
-
                     ReturningUserMenu(user);
                 }
             }
-
         } while (!validChoice);
-
     }
 
     public static void ReturningUserMenu(UserProfile user)
     {
         int returnMenuChoice = 0;
         bool validChoice = true; // validating choice inputs to continue or break in switch statement
+        
         Console.WriteLine($"\nPlease select an option, {user.UserName}:");
         Console.WriteLine("\n1 Enter new blood pressure reading");
         Console.WriteLine("2 View all previous readings");
         Console.WriteLine("3 Delete a previous entry");
         Console.WriteLine("4 Exit");
 
-        do //overall do while loop to collect all user inputs needed
+        do
         {
             try
             {
@@ -69,7 +66,7 @@ public class UserMenu
                         break;
 
                     case 2:
-                        UserMenu.ViewAllUserBpRecords(user.UserId, user);
+                        UserMenu.ViewAllUserBpRecords(user.UserId, user); //pass the arguments of user.UserId and user to the method
                         validChoice = true;
                         break;
 
@@ -117,7 +114,7 @@ public class UserMenu
             Console.WriteLine($"Thank you, {user.UserName}! Let's collect your reading.");
             Console.WriteLine("\nEnter your systolic pressure:");
             systolicInput = Console.ReadLine();
-            if (!int.TryParse(systolicInput, out systolic) || systolic < 0 || systolic > 300)
+            if (!int.TryParse(systolicInput, out systolic) || systolic < 0 || systolic > 300) //TryParse will return false if the input is not an integer
             {
                 Console.WriteLine("\nSystolic pressure must be a number between 0 and 300. Please try again.");
             }
@@ -258,6 +255,7 @@ public class UserMenu
             ReturningUserMenu(user); //returning to main menu if user does not exit program
         }
     }
+    
     public static void ViewAllUserBpRecords(Guid userId, UserProfile user)
     {
         List<BloodPressureRecord> userBpRecords = BloodPressureController.ViewAllUserBpRecords(userId);
@@ -266,7 +264,7 @@ public class UserMenu
 
         foreach (BloodPressureRecord bpRecord in userBpRecords)
         {
-            Console.WriteLine($"Systolic: {bpRecord.Systolic}, Diastolic: {bpRecord.Diastolic}, Pulse: {bpRecord.Pulse}, Date: {bpRecord.Date}\n");
+            Console.WriteLine($"Systolic: {bpRecord.Systolic} | Diastolic: {bpRecord.Diastolic} | Pulse: {bpRecord.Pulse} | Date: {bpRecord.Date}\n");
         }
 
         Console.WriteLine("\nIf you would like to return to the main menu, please press Enter.  Otherwise type 'exit' to quit.");

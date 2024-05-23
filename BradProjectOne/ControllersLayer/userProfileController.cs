@@ -15,7 +15,7 @@ public class UserProfileController
     {
         UserProfile newUser = new UserProfile(userName); // Creates a new user profile from the model
         _userData.CreateUser(newUser); // Calls the create user method from the repository
-        return newUser; // Returns the new user to the caller, which is the pre
+        return newUser; // Returns the new user to the caller, which is the user menu
     }
 
     public static bool UserExists(string userName) //method to check if user exists

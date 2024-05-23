@@ -8,8 +8,8 @@ public class MainMenu
         bool validChoice = true; // validating choice input to continue or break in switch statement
 
         Console.Clear();
-        Console.WriteLine("Welcome to the Blood Pressure Tracker!");
-        Console.WriteLine("Please select an option by entering a number:\n");
+        Console.WriteLine("********Welcome to the Blood Pressure Tracker!********");
+        Console.WriteLine("\nPlease select an option by entering a number:\n");
         Console.WriteLine("1 New user?");
         Console.WriteLine("2 Returning user?");
         Console.WriteLine("3 Exit");
@@ -23,8 +23,6 @@ public class MainMenu
                 switch (mainMenuChoice)
                 {
                     case 1:
-                        //Console.Clear();
-                        //validChoice = true;
                         try
                         {
                             UserMenu.UserCreationMenu(); //calling user creation menu method
@@ -35,7 +33,6 @@ public class MainMenu
                         }
                         break;
                     case 2:
-                        //Console.Clear();
                         try
                         {
                             UserMenu.UserLoginVerification();
@@ -52,7 +49,7 @@ public class MainMenu
                         Environment.Exit(0); //exits the program
                         return;
                     default:
-                        Console.WriteLine("Please enter a valid number.");
+                        Console.WriteLine("Please enter a valid option.");
                         validChoice = false; //since default is false we can use this to create exception-try / catch
                         break;
                 }
