@@ -8,7 +8,16 @@ public class MainMenu
         bool validChoice = true; // validating choice input to continue or break in switch statement
 
         Console.Clear();
+        Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("******************************************************");
+        Console.ResetColor();
+        Console.BackgroundColor = ConsoleColor.White;
+        Console.ForegroundColor = ConsoleColor.Black;
         Console.WriteLine("********Welcome to the Blood Pressure Tracker!********");
+        Console.ResetColor();
+        Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("******************************************************");
+        Console.ResetColor();
         Console.WriteLine("\nPlease select an option by entering a number:\n");
         Console.WriteLine("1 New user?");
         Console.WriteLine("2 Returning user?");
