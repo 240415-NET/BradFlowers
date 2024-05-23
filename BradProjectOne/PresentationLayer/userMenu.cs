@@ -46,6 +46,7 @@ public class UserMenu
         int returnMenuChoice = 0;
         bool validChoice = true; // validating choice inputs to continue or break in switch statement
 
+        Console.Clear();
         Console.WriteLine($"\nPlease select an option, {user.UserName}:");
         Console.WriteLine("\n1 Enter new blood pressure reading");
         Console.WriteLine("2 View all previous readings");
@@ -111,13 +112,12 @@ public class UserMenu
         string initialInput;
 
         Console.Clear();
-        Console.WriteLine($"Are you ready to enter a new record, {user.UserName}? If so hit enter or type 'back' to go back to user menu.");
+        Console.WriteLine($"Are you ready to enter a new record, {user.UserName}? If so hit enter or type 'back' to go back to the user menu.");
         initialInput = Console.ReadLine();
         
         if (initialInput.ToLower() == "back" || initialInput.ToLower() == "return" || initialInput.ToLower() == "exit" || initialInput.ToLower() == "no")
         {
-            ReturningUserMenu(user); //returning to main menu if user types 'return'
-            Console.Clear();
+            ReturningUserMenu(user);
             return;
         }
         else
@@ -238,6 +238,22 @@ public class UserMenu
     public static void DeleteBpReading(UserProfile user)
     {
         DateTime dateInput;
+        string initialInput;
+
+        Console.Clear();
+        Console.WriteLine($"Did you mean to select to delete an existing record, {user.UserName}? If so hit enter or type 'back' to go back to the user menu.");
+        initialInput = Console.ReadLine();
+        
+        if (initialInput.ToLower() == "back" || initialInput.ToLower() == "return" || initialInput.ToLower() == "exit" || initialInput.ToLower() == "no")
+        {
+            ReturningUserMenu(user);
+            Console.Clear();
+            return;
+        }
+        else
+        {
+            Console.Clear();
+        }
 
         Console.Clear();
         Console.WriteLine("Please enter the date of the reading you would like to delete using one of the following formats - MM DD YYYY or MM-DD-YYYY:");
