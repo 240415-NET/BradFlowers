@@ -46,6 +46,7 @@ public class UserMenu
         int returnMenuChoice = 0;
         bool validChoice = true; // validating choice inputs to continue or break in switch statement
 
+        Console.Clear();
         Console.WriteLine($"\nPlease select an option, {user.UserName}:");
         Console.WriteLine("\n1 Enter new blood pressure reading");
         Console.WriteLine("2 View all previous readings");
@@ -111,13 +112,12 @@ public class UserMenu
         string initialInput;
 
         Console.Clear();
-        Console.WriteLine($"Are you ready to enter a new record, {user.UserName}? If so hit enter or type 'back' to go back to user menu.");
+        Console.WriteLine($"Are you ready to enter a new record, {user.UserName}? If so hit enter or type 'back' to go back to the user menu.");
         initialInput = Console.ReadLine();
-        
+
         if (initialInput.ToLower() == "back" || initialInput.ToLower() == "return" || initialInput.ToLower() == "exit" || initialInput.ToLower() == "no")
         {
-            ReturningUserMenu(user); //returning to main menu if user types 'return'
-            Console.Clear();
+            ReturningUserMenu(user);
             return;
         }
         else
@@ -183,7 +183,9 @@ public class UserMenu
 
         BloodPressureController.CreateBloodPressureRecord(user, readingId, systolic, diastolic, pulse, date); //passing user inputs to create blood pressure record method in controller
 
+        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine($"\nThank you for the entry, {user.UserName}. It has been stored to your account!  If you would like to return to the main menu, please press Enter.  Otherwise type 'exit' to quit.");
+        Console.ResetColor();
         string returnToMenu = Console.ReadLine().ToLower();
 
         if (returnToMenu == "exit" || returnToMenu == "no" || returnToMenu == "quit")
@@ -238,6 +240,22 @@ public class UserMenu
     public static void DeleteBpReading(UserProfile user)
     {
         DateTime dateInput;
+        string initialInput;
+
+        Console.Clear();
+        Console.WriteLine($"Did you mean to select to delete an existing record, {user.UserName}? If so hit enter or type 'back' to go back to the user menu.");
+        initialInput = Console.ReadLine();
+
+        if (initialInput.ToLower() == "back" || initialInput.ToLower() == "return" || initialInput.ToLower() == "exit" || initialInput.ToLower() == "no")
+        {
+            ReturningUserMenu(user);
+            Console.Clear();
+            return;
+        }
+        else
+        {
+            Console.Clear();
+        }
 
         Console.Clear();
         Console.WriteLine("Please enter the date of the reading you would like to delete using one of the following formats - MM DD YYYY or MM-DD-YYYY:");
@@ -252,7 +270,9 @@ public class UserMenu
         {
             Console.WriteLine("\nNo record was found for that date.");
         }
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
         Console.WriteLine("\nIf you would like to return to the main menu, please press Enter.  Otherwise type 'exit' to quit.");
+        Console.ResetColor();
         string returnToMenu = Console.ReadLine().ToLower();
 
         if (returnToMenu == "exit" || returnToMenu == "no" || returnToMenu == "quit")
@@ -274,14 +294,29 @@ public class UserMenu
     {
         Console.Clear();
         List<BloodPressureRecord> userBpRecords = BloodPressureController.ViewAllUserBpRecords(userId);
+        Console.ForegroundColor = ConsoleColor.DarkRed;        
         Console.WriteLine("Here are all of your previous readings:\n");
+        Console.ResetColor();
 
+        bool isEven = true;
         foreach (BloodPressureRecord bpRecord in userBpRecords)
         {
-            Console.WriteLine($"Systolic: {bpRecord.Systolic} | Diastolic: {bpRecord.Diastolic} | Pulse: {bpRecord.Pulse} | Date: {bpRecord.Date}\n");
+            if (isEven)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Gray;
+            }
+            Console.WriteLine($"Systolic: {bpRecord.Systolic} | Diastolic: {bpRecord.Diastolic} | Pulse: {bpRecord.Pulse} | Date: {bpRecord.Date}");
+            isEven = !isEven;
         }
+        Console.ResetColor();
 
+        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("\nIf you would like to return to the main menu, please press Enter.  Otherwise type 'exit' to quit.");
+        Console.ResetColor();
         string returnToMenu = Console.ReadLine().ToLower();
 
         if (returnToMenu == "exit" || returnToMenu == "no" || returnToMenu == "quit")
