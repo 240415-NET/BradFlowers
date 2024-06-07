@@ -23,7 +23,7 @@ namespace TestingASP.Controllers
         //waiting for someone's slow internet connection
 
         [HttpPost]
-        public async Task<ActionResult<UserProfile>> PostNewUser(UserProfile newUserProfile)
+        public async Task<ActionResult<UserProfile>> PostNewUser(UserProfile newUserSentFromFrontend)
         {
             //inside our controller we are going to call a method from our service class
             //We are going to wrap in try catch block to catch any exceptions so API doesn't go down
@@ -34,10 +34,10 @@ namespace TestingASP.Controllers
 
                 //Inside of our try, we call the CreateNewUserProfileAsync method from our service
                 //The service layer is going to handl validating the object meets our criteria
-                await _userService.CreateNewUserProfileAsync(newUserProfileFromFrontend);
+                await _userService.CreateNewUserProfileAsync(newUserSentFromFrontend);
 
                 //If it does, we return a 200 Ok success message and echo back the oject they gave us
-                return Ok(newUserProfile);
+                return Ok(newUserSentFromFrontend);
                 //if it fails we will hit the catch block
 
             }

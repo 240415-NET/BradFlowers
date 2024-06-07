@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 //here are the dependencies we are going to register or choose to bring in
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IUserStorageEFRepo, UserStorageEFRepo>(); //This adds the EFRepo to the UserService asks for
+//builder.Services.AddScoped<IUserStorageEFRepo, UserStorageEFRepo>(); //This adds the EFRepo to the UserService asks for
 
 //This came in by default from the template, we just moved it after our dependencies
 builder.Services.AddControllers();
