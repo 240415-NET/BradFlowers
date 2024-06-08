@@ -1,4 +1,6 @@
 using TestingASP.Services;
+using TestingASP.DataAccessLayer;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +14,11 @@ builder.Services.AddSwaggerGen();
 
 //here are the dependencies we are going to register or choose to bring in
 builder.Services.AddScoped<IUserService, UserService>();
-//builder.Services.AddScoped<IUserStorageEFRepo, UserStorageEFRepo>(); //This adds the EFRepo to the UserService asks for
+builder.Services.AddScoped<IUserStorageEFRepo, UserStorageEFRepo>(); //This adds the EFRepo to the UserService asks for
+
+
+//Below we added the DbContext to the services(that inherits from EF Core DbContext) to be used by the EFRepo
+builder.Services.AddDbContext<TestingASPContext>(options => options.UseSqlServer());
 
 //This came in by default from the template, we just moved it after our dependencies
 builder.Services.AddControllers();

@@ -5,6 +5,11 @@ namespace TestingASP.Models
         public Guid UserId { get; set; }
         public string UserName { get; set; }
 
+        //Users have many BloodPressureRecords. Each of those belong to one user
+
+        public List<BloodPressureRecord> BloodPressureRecords { get; set; } = new();
+        //The above line is a shorthand way of creating a new list of BloodPressureRecords
+
         public UserProfile() { }
         public UserProfile(string userName)
         {

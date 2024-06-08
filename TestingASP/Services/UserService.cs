@@ -1,4 +1,5 @@
 using TestingASP.Models;
+using TestingASP.DataAccessLayer;
 
 namespace TestingASP.Services;
 
@@ -9,11 +10,11 @@ public class UserService : IUserService
     //relating to the UserProfile Model.  We will create private readonly
     //objects that we don't create using "new"
 
-    //private readonly IUserStorageEFRepo _userStorage;
+    private readonly IUserStorageEFRepo _userStorage;
 
-    public UserService()
+    public UserService(IUserStorageEFRepo efRepoFromBuilder)
     {
-        //_userStorage = efRepoFromBuilder;
+        _userStorage = efRepoFromBuilder;
     }
 
     //Creating method to hold business logic for creating a new user.
@@ -37,16 +38,16 @@ public class UserService : IUserService
             throw new Exception("User already exists");
         }
 
-        if(string.IsNullOrEmpty(newUserSentFromController.UserName) == true)
-                {
+        if (string.IsNullOrEmpty(newUserSentFromController.UserName) == true)
+        {
             throw new Exception("Username cannot be blank");
         }
-        //await _userStorage.CreateUserInDbAsync(newUserSentFromController);
+        await _userStorage.CreateUserInDbAsync(newUserSentFromController);
         return newUserSentFromController;
-}
+    }
 
-public bool UserExists(string userProfile) 
-{   
-    return false;
-}
+    public bool UserExists(string userProfile)
+    {
+        return false;
+    }
 }
