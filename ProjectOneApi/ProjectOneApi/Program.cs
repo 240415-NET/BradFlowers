@@ -22,7 +22,7 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserStorageEFRepo, UserStorageEFRepo>(); //This adds the UserStorageEFRepo to the services
 
 //builders we are adding for BloodPressure
-builder.Services.AddScoped<IBloodPressureRecordService, IBloodPressureRecordService>();
+builder.Services.AddScoped<IBloodPressureRecordService, BloodPressureRecordService>();
 builder.Services.AddScoped<IBloodPressureRecordStorageEFRepo, BloodPressureStorageEFRepo>();
 
 string connectionString = File.ReadAllText(@"C:\ReposForBootcamp\ConnStringEFASP.txt");

@@ -10,5 +10,15 @@ namespace ProjectOneApi.DataAccessLayer
         {
             _context = contextFromBuilder;
         }
+        public async Task<BloodPressureRecord?> CreateNewBloodPressureRecordInDBAsync(BloodPressureRecord newBloodPressureRecordSentFromService)
+
+
+        {
+            _context.BloodPressureRecords.Add(newBloodPressureRecordSentFromService);
+            await _context.SaveChangesAsync();
+            return newBloodPressureRecordSentFromService;
+        }
+
+
     }
 }

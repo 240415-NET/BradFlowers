@@ -13,5 +13,11 @@ public class BloodPressureRecordService : IBloodPressureRecordService
 
     }
 
+    public async Task CreateNewBloodPressureRecordInDBAsync(BloodPressureRecord newBloodPressureRecordFromController)
+    {
+        await _bloodPressureRecordStorage.CreateNewBloodPressureRecordInDBAsync(newBloodPressureRecordFromController);
+
+    }
+    
 
 }
