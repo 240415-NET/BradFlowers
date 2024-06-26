@@ -18,7 +18,11 @@ builder.Services.AddScoped<IUserStorageEFRepo, UserStorageEFRepo>(); //This adds
 
 
 //Below we added the DbContext to the services(that inherits from EF Core DbContext) to be used by the EFRepo
-builder.Services.AddDbContext<TestingASPContext>(options => options.UseSqlServer());
+
+string connectionString = File.ReadAllText(@"C:\ReposForBootcamp\ConnStringEFASP.txt"); //not necessarily needed and could just throw the path in the UseSqlServer method
+
+builder.Services.AddDbContext<TestingASPContext>(options => options.UseSqlServer(connectionString));
+
 
 //This came in by default from the template, we just moved it after our dependencies
 builder.Services.AddControllers();

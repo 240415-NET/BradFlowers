@@ -6,5 +6,7 @@ namespace TestingASP.DataAccessLayer
 {
     public interface IUserStorageEFRepo
     {
+        public Task<UserProfile?> CreateUserInDbAsync(UserProfile newUserSentFromUserService);
     }
 }
+

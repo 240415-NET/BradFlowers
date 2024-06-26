@@ -1,9 +1,14 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace TestingASP.Models
+
 {
     public class UserProfile
     {
+        [Key] //This is a data annotation that tells the database that this property is the primary key
         public Guid UserId { get; set; }
-        public string UserName { get; set; }
+
+        public string UserName { get; set; } //Foreign key
 
         //Users have many BloodPressureRecords. Each of those belong to one user
 

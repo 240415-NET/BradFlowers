@@ -16,14 +16,22 @@ public class TestingASPContext : DbContext
     public DbSet<UserProfile> UserProfiles { get; set; }
     public DbSet<BloodPressureRecord> BloodPressureRecords { get; set; }
 
+
+    //Is a parameteterless constructor 
+
     public TestingASPContext() { }
+
+    //in order to create/apply a migration we need a constructor that accepts a DbContextOptions and passes it to the base class constructor that comes 
+    //from the DbContext parent class
+
+    public TestingASPContext(DbContextOptions options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
 
         //Tpc is Table Per Concrete Type
         //Which means that each class in the hierarchy will have its own table
-        modelBuilder.Entity<BloodPressureRecord>().UseTpcMappingStrategy()
+        modelBuilder.Entity<BloodPressureRecord>()
         .ToTable("BloodPressureRecords");
 
         modelBuilder.Entity<UserProfile>()
