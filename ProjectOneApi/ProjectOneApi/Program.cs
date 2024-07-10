@@ -10,6 +10,19 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var myBadcorsPolicy = "_myBadCorsPolicy";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: myBadcorsPolicy,
+        policy =>
+        {
+            policy.AllowAnyOrigin();
+            policy.AllowAnyMethod();
+            policy.AllowAnyHeader();
+        });
+});
+
 // Add services to the container.
 
 
@@ -43,7 +56,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 //Editin our apps CORS policy to allow us to use DELETE and other desctruvtive methods
-app.UseCors(policy => policy.AllowAnyMethod());
+app.UseCors(myBadcorsPolicy);
 
 app.UseAuthorization();
 
